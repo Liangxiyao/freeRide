@@ -1,0 +1,63 @@
+<!--pages/addInfo/addInfo.wxml-->
+<view class="page-addinfo">
+  <view class="header">
+    <view class="tab-item {{orderType==0?'cur':''}}" data-type="0" bindtap="tabChange"><text class="txt">车找人</text></view>
+    <view class="tab-item {{orderType==1?'cur':''}}" data-type="1" bindtap="tabChange"><text class="txt">人找车</text></view>
+  </view>
+  <view class="main">
+    <form  class="forms" bindsubmit="formSubmit" bindreset="formReset">
+      <view class="item">
+        <view class="label">始发地</view>
+        <picker class="input"  mode="region" bindchange="bindStartPlace" value="{{startPlace}}">
+          <view class="picker">{{startPlace[0]}}-{{startPlace[1]}}-{{startPlace[2]}}</view>
+        </picker>
+      </view>
+      <view class="item">
+        <view class="label">目的地</view>
+        <picker class="input" mode="region" bindchange="bindEndPlace" value="{{endPlace}}">
+          <view class="picker">{{endPlace[0]}}-{{endPlace[1]}}-{{endPlace[2]}}</view>
+        </picker>
+      </view>
+      <view class="item">
+        <view class="label">出发日期</view>
+        <picker class="input" mode="date" value="{{date}}" start="2019-09-01" end="2020-09-01" bindchange="bindDateChange">
+          <view class="picker">{{date}}</view>
+        </picker>
+      </view>
+      <view class="item">
+          <view class="label">出发时间</view>
+          <picker class="input" mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">
+            <view class="picker">{{time}}</view>
+          </picker>
+        </view>
+      <view class="item" wx:if="{{orderType==0}}">
+        <view class="label">剩余座位</view>
+        <picker class="input" bindchange="bindSeatNum" value="{{seatIndex}}" range="{{seat}}">
+          <view class="picker">{{seat[seatIndex]}}</view>
+        </picker>
+      </view>
+      <view class="item" wx:else="{{orderType==1}}">
+        <view class="label">同行人数</view>
+        <picker class="input" bindchange="bindPersonNum" value="{{personIndex}}" range="{{person}}">
+          <view class="picker">{{person[personIndex]}}</view>
+        </picker>
+      </view>
+      <view class="item">
+        <view class="label">联系人</view>
+        <input name="input" class="input"/>
+      </view>
+      <view class="item">
+        <view class="label">联系电话</view>
+        <input name="input" class="input"/>
+      </view>
+      <view class="item">
+        <view class="label">备注信息</view>
+        <textarea  class="textarea input" />
+      </view>
+      <view class="btn-area">
+        <button formType="reset" class="btn reset">重置</button>
+        <button type="primary"  class="btn submit">提交</button>
+      </view>
+    </form>
+  </view>
+</view>

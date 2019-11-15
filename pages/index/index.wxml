@@ -1,0 +1,44 @@
+<view class="page-index">
+  <view class="search">
+    <input class="search-input" maxlength="10" placeholder="请输入搜索内容"/>
+    <icon class="icon-search" type="search" size="16"/>
+  </view>
+  <swiper class="swiper"
+    indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" autoplay="{{autoplay}}" circular="{{circular}}"
+    interval="{{interval}}"  next-margin="{{nextMargin}}px">
+    <block wx:for="{{imgUrl}}" wx:key="*this">
+      <swiper-item>
+        <navigator url="/pages/logs/logs?cd=1">
+          <image src="{{item.image}}" class="slide-image"/>
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper> 
+  <view class="main">
+    <view class="title">最新消息</view>
+    <view class="car-lists">
+      <navigator url="/pages/detail/detail?id={{item.id}}" class="car-item" wx:for="{{freeRideLists}}">
+        <view class="time">
+          <text class="label">出发时间：</text> {{item.startTime}}
+        </view>
+        <view class="startPlace ">
+          <text class="label">始发地：</text>{{item.startPlace}}
+        </view>
+        <view class="endPlace ">
+          <text class="label">目的地：</text>{{item.destination}}
+        </view>
+        <view class="personNum">
+          <text class="label">可乘坐：</text>{{item.seatCount}}人
+        </view>
+        <!-- <view class="tel">
+          <text class="label">联系电话：</text>{{item.mobile}}
+        </view>
+        <view class="mark" wx:if="{{item.mark}}">
+            <text class="label">备注信息：</text>{{item.mark}}
+        </view> -->
+      </navigator>
+    </view>
+    <view class="loadmore">加载更多...</view>
+  </view>
+  <button class="addCar" open-type="getUserInfo" bindgetuserinfo="addInfoHandle">发布消息</button>
+</view>

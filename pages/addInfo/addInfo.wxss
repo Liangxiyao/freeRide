@@ -1,0 +1,19 @@
+/* pages/addInfo/addInfo.wxss */
+.header{display:flex;margin-bottom:30rpx;background-color: #fff;position: fixed;top:0;left:0;right:0;}
+.header .tab-item{flex:1;text-align: center;font-size:15px;border-right:1px solid #eee;}
+.header .tab-item:last-of-type{border-right:none;}
+.header .tab-item .txt{display: inline-block;padding:15px 0;}
+.header .tab-item.cur .txt{color:#00a43e;border-bottom:2px solid #00a43e;}
+.main{padding:0 30rpx;margin-top:140rpx;}
+.forms {display:block;background-color: #fff;border-radius:5px;padding:40rpx;}
+.forms .item{display:flex;margin-bottom:20rpx;}
+.forms .label{width:120rpx;text-align: right;font-size:14px;margin-right:20rpx;line-height:60rpx;}
+.forms .input{flex:120rpx 1;border: 1px solid #f1f1f1;font-size:13px;padding:10rpx 20rpx;line-height:40rpx;}
+.radio-group{font-size:13px;line-height:50rpx;}
+.btn-area{display: flex;justify-content:space-between;margin-top:50rpx;}
+.btn-area .btn{flex:1;font-size:15px;}
+.btn-area .submit{margin-left:20rpx;background-color: #00a43e;}
+.radio{margin-right:20rpx;}
+.radio .wx-radio-input {width: 15px;height:15px;border-radius: 50%;}
+.textarea{height:160rpx;}
+
