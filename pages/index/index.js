@@ -29,6 +29,7 @@ Page({
     wx.login({
       success: function (res) {
         if (res.code) {  
+          console.log("code:" +res.code);
           HTTP.apiLogin({
             //code:res.code
             code:"5db78ffb5277b054fd31"
