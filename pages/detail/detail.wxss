@@ -1,1 +1,4 @@
 /* pages/detail/detail.wxss */
+.page-detail{margin:15px;}
+.car-item{font-size:13px;color:#666;line-height:30px;padding:10px;background-color: #fff;margin-bottom:8px;border-radius:5px;}
+.car-item .label{display:inline-block;width:70px;text-align: right;color:#333;}

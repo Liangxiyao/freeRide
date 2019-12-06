@@ -1,15 +1,15 @@
 /**index.wxss**/
 .swiper{height:370rpx;}
 .slide-image{width:100%;height:370rpx;}
-.main{padding:30rpx;}
-.search{position: relative;padding:20rpx 0;margin:0 30rpx;}
-.search-input{border:1px solid #ddd;border-radius:30rpx;font-size:13px;padding:10rpx 60rpx 10rpx 20rpx;}
-.icon-search{width:40rpx;height:60rpx;position: absolute;top:50%;margin-top:-16rpx;right:13px;}
-.title{font-size:15px;margin-bottom:20rpx;position: relative;padding:10rpx 20rpx;}
-.title::before{content:'';position: absolute;left:0rpx;top:14rpx;bottom:14rpx;border: 2px solid #00a43e;}
-.car-item{font-size:13px;color:#666;line-height:48rpx;padding:20rpx;background-color: #fff;margin-bottom:16rpx;border-radius:10rpx;}
-.car-item .label{display:inline-block;width:140rpx;text-align: right;color:#333;}
-.loadmore{text-align: center;font-size:13px;color:#666;padding:20rpx 0;}
-.addCar{width:100rpx;height:100rpx;text-align: center;background-color: #00a43e;color:#fff;font-size:15px;line-height:36rpx;border-radius:50%;
-  padding:14rpx 20rpx;box-sizing: border-box;position: fixed;right:10rpx;bottom:100rpx;}
+.main{padding:15px;}
+.search{position: relative;padding:10px 0;margin:0 15px;}
+.search-input{border:1px solid #ddd;border-radius:15px;font-size:13px;padding:5px 30px 5px 10px;}
+.icon-search{width:20px;height:30px;position: absolute;top:50%;margin-top:-9px;right:13px;}
+.title{font-size:15px;margin-bottom:10px;position: relative;padding:5px 10px;}
+.title::before{content:'';position: absolute;left:0;top:7px;bottom:7px;border: 2px solid #00a43e;}
+.car-item{font-size:13px;color:#666;line-height:24px;padding:10px;background-color: #fff;margin-bottom:8px;border-radius:5px;}
+.car-item .label{display:inline-block;width:70px;text-align: right;color:#333;}
+.loadmore{text-align: center;font-size:13px;color:#666;padding:10px 0;}
+.addCar{width:50px;height:50px;text-align: center;background-color: #00a43e;color:#fff;font-size:15px;line-height:18px;border-radius:50%;
+  padding:7px 10px;box-sizing: border-box;position: fixed;right:5px;bottom:100rpx;}
 .wd50{float: left;width:50%;}

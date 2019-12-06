@@ -14,7 +14,6 @@ Page({
     freeRideLists:[]
   },
   onLoad(options) {
-    this._getLogin()
     this._getFreeRide()  
   },
   //上拉刷新
@@ -24,49 +23,38 @@ Page({
   onReachBottom(){
     console.log('上拉加载')
   },
-  //获取code
-  _getLogin() {
-    wx.login({
-      success: function (res) {
-        if (res.code) {  
-          console.log("code:" +res.code);
-          HTTP.apiLogin({
-            //code:res.code
-            code:"5db78ffb5277b054fd31"
-          }).then((res) => { 
-            if (res.code === 0) {
-              wx.getStorage({
-                key:"session",
-                value: res.res
-              })
-            }
-          }).catch((err) => {
-            
-          });
-        } else {
-          console.log(res.errMsg)
-        }
-      }
-    })
-  },
-  //发布信息入口
-  addInfoHandle(e) {
-    wx.getSetting({
-      success(res) {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success: function (res) {
-              wx.navigateTo({
-                url: '/pages/addInfo/addInfo',
-              })
+  //获取用户信息授权 、发布信息入口
+  getUserInfoHandle(e) {
+    if (e.detail.userInfo) {
+      wx.setStorage({
+        key:"userInfo",
+        data: e.detail.userInfo
+      });
+      wx.navigateTo({
+        url: '/pages/addInfo/addInfo',
+      })
+    }
 
-            }
-          })
-        }
-      }
-    })
-    
+    // wx.getSetting({
+    //   success(res) {
+    //     // 允许授权，可以直接调用 getUserInfo 获取头像昵称
+    //     if (res.authSetting['scope.userInfo']) {  
+    //       wx.getUserInfo({
+    //         success (res) {          
+    //           wx.setStorage({
+    //             key:"userInfo",
+    //             data: res.userInfo
+    //           });
+    //           wx.navigateTo({
+    //             url: '/pages/addInfo/addInfo',
+    //           })
+    //         }
+    //       })
+    //     } else {
+    //       console.log("未授权");    
+    //     }
+    //   }
+    // })  
   },
   //列表信息
   _getFreeRide() {

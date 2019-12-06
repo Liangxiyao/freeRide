@@ -1,15 +1,70 @@
-// pages/addInfo/addInfo.js
+const app = getApp()
+import HTTP from '../../utils/http'
+import { timestamp } from '../../assets/js/util'
+
+
 Page({
   data: {
-    orderType: 0,
+    orderType: 1,
     date: '2016-09-01',
     time: '12:00',
-    startPlace: ['北京市','北京市','海淀区'],
-    endPlace: ['河南省','三门峡市','灵宝市'],
+    start: ['北京市','北京市','海淀区'],
+    end: ['河南省','三门峡市','灵宝市'],
     seatIndex: 0,
     seat: ['1座','2座','3座','4座','5座','6座'],
     personIndex: 0,
     person: ['1人','2人','3人','4人','5人','6人'],
+  },
+  /**
+   * 提交表单
+  **/
+  formSubmit: function (e) { 
+
+    let rule = this.checkedForm(e.detail.value)
+    if (rule) {
+      let token = wx.getStorageSync('token') 
+      let { orderType, date, time, start, end, seatIndex, seat } = this.data
+      let seatCount = orderType === 1 ? parseInt(seat[seatIndex]) : parseInt(person[personIndex])
+  
+      console.log(token);
+      
+      let data = {
+        ...e.detail.value,
+        token,
+        orderType,
+        start:start.join('-'),
+        end:end.join('-'),
+        time:timestamp(date+' '+time),
+        seatCount,
+      }
+      
+      HTTP.apiAddOrder({ ...data }).then((result) => {
+        console.log(result)
+      }).catch((err) => {
+        
+      });
+    }
+
+  },
+  //重置
+  formReset: function () {
+    console.log('form发生了reset事件')
+  },
+  /**
+   * 表单验证
+   */
+  checkedForm(value) {
+    if (value.mobile === '') {
+      wx.showToast({
+        title: '请填写联系电话',
+        icon:'none',
+        duration: 2000
+      })
+      console.log(222)
+      return false
+    } else {
+      return true
+    }
   },
   tabChange: function (e) {
     this.setData({
@@ -17,13 +72,11 @@ Page({
     })
   },
   bindSeatNum: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       seatIndex: e.detail.value
     })
   },
   bindPersonNum: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       personIndex: e.detail.value
     })
@@ -38,14 +91,14 @@ Page({
       time: e.detail.value
     })
   },
-  bindStartPlace: function (e) {
+  bindstart: function (e) {
     this.setData({
-      startPlace: e.detail.value
+      start: e.detail.value
     })
   },
-  bindEndPlace: function (e) {
+  bindend: function (e) {
     this.setData({
-      endPlace: e.detail.value
+      end: e.detail.value
     })
   },
   radioChange: function (e) {    

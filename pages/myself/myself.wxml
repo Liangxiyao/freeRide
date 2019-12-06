@@ -1,2 +1,24 @@
 <!--pages/myself/myself.wxml-->
-<text>pages/myself/myself.wxml</text>
+<view class="page-myself">
+  <button class="hd wbox" open-type="getUserInfo" bindgetuserinfo="getUserInfoHandle">
+    <image src="{{userInfo.avatarUrl?userInfo.avatarUrl:'../../assets/images/my1.png'}}" class="user-photo"></image>
+    <text class="user-name wbox-flex">{{userInfo.nickName?userInfo.nickName:"请登录"}}</text>
+    <!-- <open-data type="userAvatarUrl" class="user-photo"></open-data>
+    <open-data type="userNickName" class="user-name wbox-flex"></open-data> -->
+  </button>
+ 
+  <view class="bd">
+    <view class="item wbox bdb">
+      <view class="txt wbox-flex">我发布的</view>
+      <icon class="iconfont icon-arrow"></icon>
+    </view>
+    <view class="item wbox bdb">
+      <view class="txt wbox-flex">个人信息</view>
+      <icon class="iconfont icon-arrow"></icon>
+    </view> 
+    <view class="item wbox bdb">
+      <view class="txt wbox-flex">个人信息</view>
+      <icon class="iconfont icon-arrow"></icon>
+    </view>
+  </view>
+</view>

@@ -1,55 +1,46 @@
+import HTTP from './http'
 //用户登陆
-function userLogin() {
+export function userLogin() {
   wx.checkSession({
     success: function () {
       //存在登陆态
     },
     fail: function () {
       //不存在登陆态
-      onLogin()
+      toLogin()
     }
   })
 }
  
-function onLogin() {
+export function toLogin() {
   wx.login({
     success: function (res) {
       if (res.code) {
         //发起网络请求
-        wx.request({
-          url: 'Our Server ApiUrl',
-          data: {
-            code: res.code
-          },
-          success: function (res) {
-            const self = this
-            if (逻辑成功) {
-              //获取到用户凭证 存儲 3rd_session 
-              var json = JSON.parse(res.data.Data)
-              wx.setStorage({
-                key: "third_Session", 
-                data: json.third_Session
-              })
-              getUserInfo()
-            }
-            else {
- 
-            }
-          },
-          fail: function (res) {
- 
+        HTTP.apiLogin({
+          code:res.code
+          //code:"5db78ffb5277b054fd31"
+        }).then((res) => { 
+          if (res.code === 0) {
+            wx.setStorage({
+              key:"token",
+              data: res.res
+            })
           }
-        })
+          console.log(wx.getStorageSync('token'))
+        }).catch((err) => {
+          console.log(err)
+        });
       }
     },
     fail: function (res) {
-  
+      console.log(res)
     }
   })
  
 }
  
-function getUserInfo() {
+export function getUserInfo() {
   wx.getUserInfo({
     success: function (res) {
       var userInfo = res.userInfo
@@ -77,7 +68,7 @@ function userInfoSetInSQL(userInfo) {
           country: userInfo.country
         },
         success: function (res) {
-          if (逻辑成功) {
+          if (res.code === 0) {
             //SQL更新用户数据成功
           }
           else {

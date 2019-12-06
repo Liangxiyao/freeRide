@@ -17,7 +17,7 @@
   <view class="main">
     <view class="title">最新消息</view>
     <view class="car-lists">
-      <navigator url="/pages/detail/detail?id={{item.id}}" class="car-item" wx:for="{{freeRideLists}}">
+      <navigator url="/pages/detail/detail?id={{item.id}}" class="car-item" wx:for="{{freeRideLists}}" wx:key="item.id">
         <view class="time">
           <text class="label">出发时间：</text> {{item.startTime}}
         </view>
@@ -40,5 +40,5 @@
     </view>
     <view class="loadmore">加载更多...</view>
   </view>
-  <button class="addCar" open-type="getUserInfo" bindgetuserinfo="addInfoHandle">发布消息</button>
+  <button class="addCar" open-type="getUserInfo" bindgetuserinfo="getUserInfoHandle">发布消息</button>
 </view>

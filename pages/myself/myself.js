@@ -1,66 +1,117 @@
 // pages/myself/myself.js
+import HTTP from '../../utils/http'
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    userInfo:{} 
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    
+  onLoad() {
+    let that = this
+    // wx.getSetting({
+    //   success (res){
+    //     if (res.authSetting['scope.userInfo']) {
+    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+    //       wx.getUserInfo({
+    //         success: function (res) {
+    //           that.setData({
+    //            userInfo:res.userInfo
+    //           }) 
+    //           wx.setStorage({
+    //             key: 'userInfo',
+    //             data: res.userInfo
+    //           })
+    //         }
+    //       })
+    //     }
+    //   }
+    // })
+    let userInfo = wx.getStorageSync('userInfo')
+    if (userInfo) {
+      this.setData({
+        userInfo:userInfo
+      })
+    }
   },
+  getUserInfoHandle(e) {
+    this.setData({
+      userInfo:e.detail.userInfo
+    })
+    wx.setStorage({
+      key: 'userInfo',
+      data: e.detail.userInfo
+    })
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    let token = wx.getStorageSync('token') 
+    let {nickName,avatarUrl} = e.detail.userInfo
+    HTTP.apiUpdateUser({
+      token,
+      nickName,
+      headUrl: avatarUrl,
+      mobile:''
+    }).then((result) => {
+      wx.showToast({
+        title: '信息更新成功',
+        icon:'none',
+        duration: 2000
+      })
+    }).catch((err) => {
+      
+    });
   }
+      /**
+     * 更新用户信息
+     */
+   
+  // updateUserInfo() {
+  //   let token = wx.getStorageSync('token') 
+  //   wx.getUserInfo({
+  //     success(res) { 
+  //       console.log(res)
+  //       let {nickName,avatarUrl} = res.userInfo
+  //       HTTP.apiUpdateUser({
+  //         token,
+  //         nickName,
+  //         headUrl: avatarUrl,
+  //         mobile:''
+  //       }).then((result) => {
+  //         wx.showToast({
+  //           title: '信息更新成功',
+  //           icon:'none',
+  //           duration: 2000
+  //         })
+  //       }).catch((err) => {
+          
+  //       });
+  //     }
+  //   })
+  //   wx.getSetting({
+  //     success(res) {
+  //       // 允许授权，可以直接调用 getUserInfo 获取头像昵称
+  //       if (res.authSetting['scope.userInfo']) {  
+  //         wx.getUserInfo({
+  //           success (res) {          
+  //             let {nickName,avatarUrl} = res.userInfo
+  //             HTTP.apiUpdateUser({
+  //               token,
+  //               nickName,
+  //               headUrl: avatarUrl,
+  //               mobile:''
+  //             }).then((result) => {
+  //               wx.showToast({
+  //                 title: '信息更新成功',
+  //                 icon:'none',
+  //                 duration: 2000
+  //               })
+  //             }).catch((err) => {
+                
+  //             });
+  //           }
+  //         })
+  //       } else {
+  //         console.log("未授权");    
+  //       }
+  //     }
+  //  })  
+    
+  //}
 })

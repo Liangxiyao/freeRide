@@ -1,3 +1,22 @@
 <view class="page-detail">
-  
+  <view class="car-item">
+    <view class="time">
+      <text class="label">出发时间：</text> {{detail.startTime}}
+    </view>
+    <view class="startPlace ">
+      <text class="label">始发地：</text>{{detail.startPlace}}
+    </view>
+    <view class="endPlace ">
+      <text class="label">目的地：</text>{{detail.destination}}
+    </view>
+    <view class="personNum">
+      <text class="label">可乘坐：</text>{{detail.seatCount}}人
+    </view>
+    <view class="tel">
+      <text class="label">联系电话：</text>{{detail.mobile}}
+    </view>
+    <view class="mark" wx:if="{{detail.mark}}">
+        <text class="label">备注信息：</text>{{detail.mark}}
+    </view>
+  </view>
 </view>

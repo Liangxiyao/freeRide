@@ -1,21 +1,21 @@
 <!--pages/addInfo/addInfo.wxml-->
 <view class="page-addinfo">
   <view class="header">
-    <view class="tab-item {{orderType==0?'cur':''}}" data-type="0" bindtap="tabChange"><text class="txt">车找人</text></view>
-    <view class="tab-item {{orderType==1?'cur':''}}" data-type="1" bindtap="tabChange"><text class="txt">人找车</text></view>
+    <view class="tab-item {{orderType==1?'cur':''}}" data-type="0" bindtap="tabChange"><text class="txt">车找人</text></view>
+    <view class="tab-item {{orderType==2?'cur':''}}" data-type="1" bindtap="tabChange"><text class="txt">人找车</text></view>
   </view>
   <view class="main">
     <form  class="forms" bindsubmit="formSubmit" bindreset="formReset">
       <view class="item">
         <view class="label">始发地</view>
         <picker class="input"  mode="region" bindchange="bindStartPlace" value="{{startPlace}}">
-          <view class="picker">{{startPlace[0]}}-{{startPlace[1]}}-{{startPlace[2]}}</view>
+          <view class="picker">{{start[0]}}-{{start[1]}}-{{start[2]}}</view>
         </picker>
       </view>
       <view class="item">
         <view class="label">目的地</view>
         <picker class="input" mode="region" bindchange="bindEndPlace" value="{{endPlace}}">
-          <view class="picker">{{endPlace[0]}}-{{endPlace[1]}}-{{endPlace[2]}}</view>
+          <view class="picker">{{end[0]}}-{{end[1]}}-{{end[2]}}</view>
         </picker>
       </view>
       <view class="item">
@@ -44,19 +44,19 @@
       </view>
       <view class="item">
         <view class="label">联系人</view>
-        <input name="input" class="input"/>
+        <input name="contact" class="input"/>
       </view>
       <view class="item">
         <view class="label">联系电话</view>
-        <input name="input" class="input"/>
+        <input name="mobile" class="input"/>
       </view>
       <view class="item">
         <view class="label">备注信息</view>
-        <textarea  class="textarea input" />
+        <textarea  class="textarea input" name="mark"/>
       </view>
       <view class="btn-area">
         <button formType="reset" class="btn reset">重置</button>
-        <button type="primary"  class="btn submit">提交</button>
+        <button formType="submit" type="primary"  class="btn submit">提交</button>
       </view>
     </form>
   </view>

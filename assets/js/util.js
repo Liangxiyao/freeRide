@@ -14,6 +14,13 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const timestamp = date => { 
+  return new Date(date).valueOf()
+}
+
+
+
 module.exports = {
-  formatTime: formatTime
+  formatTime,
+  timestamp
 }

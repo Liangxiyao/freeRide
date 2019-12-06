@@ -1,3 +1,4 @@
 {
-  "usingComponents": {}
+  "navigationBarTitleText":"顺风车详情",
+  "enablePullDownRefresh":false
 }

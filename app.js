@@ -1,17 +1,21 @@
 //app.js
+import HTTP from './utils/http'
 App({
     //启动时候触发，只触发一次
   onLaunch: function () {
     this.checkNetwork()
     this.checkSession()
+    this.getLogin()
   },
   globalData: {
-      userInfo: null,
-      subDomain:'starokay'
+    userInfo: null,
+    
   },
   onPageNotFound(res){
   },
-  //检查网络
+  /**
+   * 检查网络
+   */
   checkNetwork() {
    // const isConnected = true
     wx.getNetworkType({
@@ -41,7 +45,9 @@ App({
       }
     });
   },
-  //检测版本更新
+  /**
+   * 检测版本更新
+  */
   checkSession() {
     const updateManager = wx.getUpdateManager()
     updateManager.onCheckForUpdate((res) => {
@@ -68,7 +74,31 @@ App({
       })
     })
   },
-  
+   /**
+    * 获取code
+    */
+   getLogin() {
+    wx.login({
+      success (res) {
+        if (res.code) {  
+          HTTP.apiLogin({
+            code:res.code
+          }).then((res) => { 
+            if (res.code === 0) {
+              wx.setStorage({
+                key:"token",
+                data: res.res
+              })
+            }
+          }).catch((err) => {
+            
+          });
+        } else {
+          console.log(res.errMsg)
+        }
+      }
+    })
+  },
                      
     
 })
