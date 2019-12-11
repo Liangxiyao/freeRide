@@ -1,45 +1,99 @@
 const app = getApp()
 import HTTP from '../../utils/http'
-import { timestamp } from '../../assets/js/util'
+import { timestamp, formatTime } from '../../assets/js/util'
 
+const DEFAULTDATE = '请选择--'
+const DEFAULTSTART = ['请选择']
+const DEFAULTEND = ['请选择']
 
 Page({
   data: {
+    initDate: formatTime(new Date(),2),
+    date: DEFAULTDATE,
+    formInput:'',
     orderType: 1,
-    date: '2016-09-01',
-    time: '12:00',
-    start: ['北京市','北京市','海淀区'],
-    end: ['河南省','三门峡市','灵宝市'],
+    start: ['请选择'],
+    end: ['请选择'],
     seatIndex: 0,
     seat: ['1座','2座','3座','4座','5座','6座'],
     personIndex: 0,
-    person: ['1人','2人','3人','4人','5人','6人'],
+    person: ['1人', '2人', '3人', '4人', '5人', '6人']
+  },
+  onLoad() {
+    console.log(formatTime(new Date(), 2))
+
+  },
+  handleChange(e) { 
+    let checkedDate = e.detail.dateString
+    let checkedTimestamp = timestamp(checkedDate)
+    let nowTimestamp = timestamp(this.data.initDate)
+    let timeDifference = checkedTimestamp - nowTimestamp
+    //出发时间最早为6小时后
+    const timeDis = 6 * 60 * 60 * 1000
+    if (timeDifference > timeDis) {
+      this.setData({
+        date: checkedDate
+      })
+    } else {
+      wx.showToast({
+        title: '出发时间最早为6小时后',
+        icon:'none',
+        duration: 2000
+      })
+      this.setData({
+        date: DEFAULTDATE
+      })
+    }
+    
   },
   /**
    * 提交表单
   **/
   formSubmit: function (e) { 
-
-    let rule = this.checkedForm(e.detail.value)
+    let that = this
+    let rule = that.checkedAddress() && that.checkedTime()  && that.checkedPhone(e.detail.value) 
     if (rule) {
-      let token = wx.getStorageSync('token') 
-      let { orderType, date, time, start, end, seatIndex, seat } = this.data
-      let seatCount = orderType === 1 ? parseInt(seat[seatIndex]) : parseInt(person[personIndex])
-  
-      console.log(token);
+      let { orderType, date, time, start, end, seatIndex, seat } = that.data
+      let seatCount = orderType === 1 ? parseInt(seat[seatIndex]) : parseInt(person[personIndex]) //剩余座位或同行人
+      let addressType = start[1] == end[1] ? 1 : 2  //订单类型
       
       let data = {
         ...e.detail.value,
-        token,
         orderType,
+        addressType,
         start:start.join('-'),
         end:end.join('-'),
-        time:timestamp(date+' '+time),
+        time:timestamp(date),
         seatCount,
       }
       
       HTTP.apiAddOrder({ ...data }).then((result) => {
-        console.log(result)
+        let { code, message } = result
+        
+        if (code === 0) {
+          // wx.showToast({
+          //   title: '信息发布成功',
+          //   icon:'none',
+          //   duration: 2000,
+          //   success() {
+          //     //跳转详情
+              
+          //   }
+            
+          // })  
+          wx.navigateTo({
+            url: '/pages/detail/detail',
+          })
+          //表单重置
+          that.clearInfo()
+
+        } else {
+          wx.showToast({
+            title: message,
+            icon:'none',
+            duration: 2000
+          })
+        }
       }).catch((err) => {
         
       });
@@ -47,23 +101,58 @@ Page({
 
   },
   //重置
-  formReset: function () {
-    console.log('form发生了reset事件')
+  formReset: function (e) {
+    this.clearInfo()
   },
   /**
    * 表单验证
    */
-  checkedForm(value) {
-    if (value.mobile === '') {
+  checkedPhone(value) {
+    let mobile = value.mobile.replace(/(^\s*)|(\s*$)/g, "")
+
+    if (mobile === '') {
       wx.showToast({
         title: '请填写联系电话',
         icon:'none',
         duration: 2000
       })
-      console.log(222)
+      return false
+    } else if (!/^1[3456789]\d{9}$/.test(mobile)) {
+      wx.showToast({
+        title: '手机号有误',
+        icon:'none',
+        duration: 2000
+      })
       return false
     } else {
       return true
+    }
+  },
+  checkedAddress() {
+    let { start, end } = this.data
+
+    if (start[0] != ['请选择'] && end[0] != ['请选择']) {
+      return true
+    } else {
+      wx.showToast({
+        title: '请选择起始地址',
+        icon:'none',
+        duration: 2000
+      })
+      return false
+    }
+  },
+  checkedTime() {
+    let { date } = this.data
+    if (date != DEFAULTDATE) {
+      return true
+    } else {
+      wx.showToast({
+        title: '请选择出发时间',
+        icon:'none',
+        duration: 2000
+      })
+      return false
     }
   },
   tabChange: function (e) {
@@ -91,12 +180,12 @@ Page({
       time: e.detail.value
     })
   },
-  bindstart: function (e) {
+  bindStart: function (e) {
     this.setData({
       start: e.detail.value
     })
   },
-  bindend: function (e) {
+  bindEnd: function (e) {
     this.setData({
       end: e.detail.value
     })
@@ -105,6 +194,20 @@ Page({
     this.setData({
       orderType:e.detail.value
     })
-  }
+  },
 
+  /**
+   * 重置信息
+   */
+  clearInfo() {
+    this.setData({
+      initDate: formatTime(new Date(),2),
+      date: '请选择--',
+      seatIndex: 0,
+      personIndex: 0,
+      formInput: '',
+      start: ['请选择'],
+      end: ['请选择'],
+    })
+  }
 })

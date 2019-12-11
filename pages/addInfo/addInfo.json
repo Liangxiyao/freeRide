@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText":"发布消息",
-  "enablePullDownRefresh":false
+  "enablePullDownRefresh":false,
+  "usingComponents": {    
+      "date-picker":"/temp/datepicker/datepicker"
+  }
 }

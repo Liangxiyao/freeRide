@@ -1,9 +1,10 @@
 {
-  "pages": [
+  "pages": [ 
     "pages/index/index",
     "pages/addInfo/addInfo",
     "pages/myself/myself",
     "pages/detail/detail"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

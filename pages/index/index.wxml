@@ -17,18 +17,18 @@
   <view class="main">
     <view class="title">最新消息</view>
     <view class="car-lists">
-      <navigator url="/pages/detail/detail?id={{item.id}}" class="car-item" wx:for="{{freeRideLists}}" wx:key="item.id">
+      <navigator url="/pages/detail/detail?id={{item.id}}" class="car-item" wx:for="{{lists}}" wx:key="item.id">
         <view class="time">
-          <text class="label">出发时间：</text> {{item.startTime}}
+          <icon class="iconfont icon-time"></icon> {{item.startTime}}
         </view>
         <view class="startPlace ">
-          <text class="label">始发地：</text>{{item.startPlace}}
+          <icon class="iconfont icon-dot"></icon>{{item.startPlace}}
         </view>
         <view class="endPlace ">
-          <text class="label">目的地：</text>{{item.destination}}
+          <icon class="iconfont icon-dot icon-end"></icon>{{item.destination}}
         </view>
         <view class="personNum">
-          <text class="label">可乘坐：</text>{{item.seatCount}}人
+          <icon class="iconfont icon-person"></icon>{{item.seatCount}}人
         </view>
         <!-- <view class="tel">
           <text class="label">联系电话：</text>{{item.mobile}}
@@ -38,7 +38,7 @@
         </view> -->
       </navigator>
     </view>
-    <view class="loadmore">加载更多...</view>
+    <view class="loadmore">{{hasNextPage?"加载更多...":"暂无更多数据~"}}</view>
   </view>
   <button class="addCar" open-type="getUserInfo" bindgetuserinfo="getUserInfoHandle">发布消息</button>
 </view>

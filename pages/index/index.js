@@ -11,7 +11,9 @@ Page({
     interval: 3000,
     indicatorColor: '#ccc',
     imgUrl: [],
-    freeRideLists:[]
+    lists: [],
+    hasNextPage: true,
+    page:1
   },
   onLoad(options) {
     this._getFreeRide()  
@@ -21,7 +23,13 @@ Page({
   },
   //上拉加载
   onReachBottom(){
-    console.log('上拉加载')
+    let { hasNextPage, page } = this.data
+    this.setData({
+      page:page+1
+    })
+    if (hasNextPage) {
+      this._getFreeRide()
+    }
   },
   //获取用户信息授权 、发布信息入口
   getUserInfoHandle(e) {
@@ -58,12 +66,17 @@ Page({
   },
   //列表信息
   _getFreeRide() {
-    HTTP.apiFreeRide().then((res) => {
-      console.log(res)
+    let that = this
+    HTTP.apiFreeRide({
+      index:that.data.page
+    }).then((res) => {
       if (res.code == 0) {
-        let { items } = res
+        let { items, hasNextPage } = res
+        let oldData = that.data.lists
+        let lists = oldData.concat(items)
         this.setData({
-          freeRideLists:items
+          lists,
+          hasNextPage
         })  
       } else {
         console.log(res.errMsg)

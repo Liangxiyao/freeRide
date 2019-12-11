@@ -7,37 +7,39 @@ const request = (url, params, method)=>{
     title: '加载中',
   })
   return new Promise((resolve, reject) => {
-      wx.request({
-        url: `${API_URI}/${url}`,
-        data: params,
-        methods: method || 'GET',
-        success(res) {
-          wx.hideLoading()
-          const isSuccess = isHttpSuccess(res.statusCode);
-          // 成功的请求状态
-          if (isSuccess) { 
-            let { code, message } = res.data
-            //登陆成功
-            if (code === 0) { 
-              resolve(res.data);
-            } else if (code === 600010) {//token过期
-              toLogin()
-            } else {
-              wx.showToast({
-                title: message,
-                icon:'none',
-                duration: 2000
-              })
-            }      
+    let token = wx.getStorageSync('token') 
+    wx.request({
+      url: `${API_URI}/${url}`,
+      data: params,
+      header:{'token':token?token:''},
+      methods: method || 'GET',
+      success(res) {
+        wx.hideLoading()
+        const isSuccess = isHttpSuccess(res.statusCode);
+        // 成功的请求状态
+        if (isSuccess) { 
+          let { code, message } = res.data
+          //登陆成功
+          if (code === 0) { 
+            resolve(res.data);
+          } else if (code === 600010) {//token过期
+            toLogin()
           } else {
-            reject({
-              msg: `网络错误:${res.statusCode}`,
-              detail: res.msg
-            });
-          }
-        } ,
-        fail: reject
-      })
+            wx.showToast({
+              title: message,
+              icon:'none',
+              duration: 2000
+            })
+          }      
+        } else {
+          reject({
+            msg: `网络错误:${res.statusCode}`,
+            detail: res.msg
+          });
+        }
+      } ,
+      fail: reject
+    })
   })
 }
 function isHttpSuccess(status) {

@@ -1,42 +1,61 @@
 <!--pages/addInfo/addInfo.wxml-->
+
 <view class="page-addinfo">
   <view class="header">
-    <view class="tab-item {{orderType==1?'cur':''}}" data-type="0" bindtap="tabChange"><text class="txt">车找人</text></view>
-    <view class="tab-item {{orderType==2?'cur':''}}" data-type="1" bindtap="tabChange"><text class="txt">人找车</text></view>
+    <view class="tab-item {{orderType===1?'cur':''}}" data-type="{{1}}" bindtap="tabChange"><text class="txt">车找人</text></view>
+    <view class="tab-item {{orderType===2?'cur':''}}" data-type="{{2}}" bindtap="tabChange"><text class="txt">人找车</text></view>
   </view>
   <view class="main">
     <form  class="forms" bindsubmit="formSubmit" bindreset="formReset">
       <view class="item">
         <view class="label">始发地</view>
-        <picker class="input"  mode="region" bindchange="bindStartPlace" value="{{startPlace}}">
+        <picker class="input"  mode="region" bindchange="bindStart" value="{{start}}">
           <view class="picker">{{start[0]}}-{{start[1]}}-{{start[2]}}</view>
         </picker>
       </view>
       <view class="item">
         <view class="label">目的地</view>
-        <picker class="input" mode="region" bindchange="bindEndPlace" value="{{endPlace}}">
+        <picker class="input" mode="region" bindchange="bindEnd" value="{{end}}">
           <view class="picker">{{end[0]}}-{{end[1]}}-{{end[2]}}</view>
         </picker>
       </view>
       <view class="item">
-        <view class="label">出发日期</view>
-        <picker class="input" mode="date" value="{{date}}" start="2019-09-01" end="2020-09-01" bindchange="bindDateChange">
+        <view class="label">出发时间</view>
+        <date-picker class="input" value="{{initDate}}" bindchange="handleChange">{{date}}</date-picker>
+        <!-- <picker class="input" mode="date" value="{{date}}" start="{{date}}" end="2020-09-01" bindchange="bindDateChange">
           <view class="picker">{{date}}</view>
-        </picker>
+        </picker> -->
+        <!-- <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
+          <picker-view-column class="picker-text">
+            <view wx:for="{{years}}" style="line-height: 50px">{{item}}</view>
+          </picker-view-column>
+          <picker-view-column class="picker-text">
+            <view wx:for="{{months}}" style="line-height: 50px">{{item}}</view>
+          </picker-view-column>
+          <picker-view-column class="picker-text">
+            <view wx:for="{{days}}" style="line-height: 50px">{{item}}</view>
+          </picker-view-column>
+           <picker-view-column class="picker-text">
+            <view wx:for="{{hours}}" style="line-height: 50px">{{item}}</view>
+          </picker-view-column>
+           <picker-view-column class="picker-text">
+            <view wx:for="{{minutes}}" style="line-height: 50px">{{item}}</view>
+          </picker-view-column>
+        </picker-view> -->
       </view>
-      <view class="item">
-          <view class="label">出发时间</view>
-          <picker class="input" mode="time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">
-            <view class="picker">{{time}}</view>
-          </picker>
-        </view>
-      <view class="item" wx:if="{{orderType==0}}">
+      <!-- <view class="item">
+        <view class="label">出发时间</view>
+        <picker class="input" mode="time" value="{{time}}" start="{{time}}" end="23:59" bindchange="bindTimeChange">
+          <view class="picker">{{time}}</view>
+        </picker>
+      </view> -->
+      <view class="item" wx:if="{{orderType===1}}">
         <view class="label">剩余座位</view>
         <picker class="input" bindchange="bindSeatNum" value="{{seatIndex}}" range="{{seat}}">
           <view class="picker">{{seat[seatIndex]}}</view>
         </picker>
       </view>
-      <view class="item" wx:else="{{orderType==1}}">
+      <view class="item" wx:else="{{orderType===2}}">
         <view class="label">同行人数</view>
         <picker class="input" bindchange="bindPersonNum" value="{{personIndex}}" range="{{person}}">
           <view class="picker">{{person[personIndex]}}</view>
@@ -44,15 +63,15 @@
       </view>
       <view class="item">
         <view class="label">联系人</view>
-        <input name="contact" class="input"/>
+        <input name="contact" class="input" value="{{formInput}}"/>
       </view>
       <view class="item">
         <view class="label">联系电话</view>
-        <input name="mobile" class="input"/>
+        <input name="mobile" class="input" value="{{formInput}}" required/>
       </view>
       <view class="item">
         <view class="label">备注信息</view>
-        <textarea  class="textarea input" name="mark"/>
+        <textarea  class="textarea input" name="mark" value="{{formInput}}" maxlength="140"/>
       </view>
       <view class="btn-area">
         <button formType="reset" class="btn reset">重置</button>

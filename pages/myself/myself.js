@@ -40,11 +40,8 @@ Page({
       key: 'userInfo',
       data: e.detail.userInfo
     })
-
-    let token = wx.getStorageSync('token') 
     let {nickName,avatarUrl} = e.detail.userInfo
     HTTP.apiUpdateUser({
-      token,
       nickName,
       headUrl: avatarUrl,
       mobile:''

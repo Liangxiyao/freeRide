@@ -1,12 +1,17 @@
-const formatTime = date => {
+export const formatTime = (date,type) => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()
   const hour = date.getHours()
   const minute = date.getMinutes()
   const second = date.getSeconds()
-
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  if (type == 1) {
+    return [year, month, day].map(formatNumber).join('-')
+  } else if (type == 2) {
+    return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute].map(formatNumber).join(':')
+  }else{
+    return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+  }
 }
 
 const formatNumber = n => {
@@ -14,13 +19,7 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-const timestamp = date => { 
+export const timestamp = date => { 
   return new Date(date).valueOf()
 }
 
-
-
-module.exports = {
-  formatTime,
-  timestamp
-}
