@@ -10,15 +10,15 @@
   <view class="bd">
     <view class="item wbox bdb">
       <view class="txt wbox-flex">我发布的</view>
-      <icon class="iconfont icon-arrow"></icon>
+      <icon class="iconfont icon-arrow"/>
     </view>
     <view class="item wbox bdb">
       <view class="txt wbox-flex">个人信息</view>
-      <icon class="iconfont icon-arrow"></icon>
+      <icon class="iconfont icon-arrow"/>
     </view> 
     <view class="item wbox bdb">
       <view class="txt wbox-flex">个人信息</view>
-      <icon class="iconfont icon-arrow"></icon>
+      <icon class="iconfont icon-arrow"/>
     </view>
   </view>
 </view>

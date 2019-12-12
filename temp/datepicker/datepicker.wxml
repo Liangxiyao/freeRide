@@ -1,5 +1,8 @@
 
-<picker mode="multiSelector" value="{{valueArray}}" range="{{rangeValues}}" bindcolumnchange="handleColumnChange" bindchange="handleValueChange" bindcancel="handleCancel">
+<picker mode="multiSelector" value="{{valueArray}}" range="{{rangeValues}}" 
+        bindcolumnchange="handleColumnChange" 
+        bindchange="handleValueChange" 
+        bindcancel="handleCancel">
   <slot></slot>
 </picker>
 

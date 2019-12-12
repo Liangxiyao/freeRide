@@ -7,9 +7,14 @@
 .icon-search{width:20px;height:30px;position: absolute;top:50%;margin-top:-9px;right:13px;}
 .title{font-size:15px;margin-bottom:10px;position: relative;padding:5px 10px;}
 .title::before{content:'';position: absolute;left:0;top:7px;bottom:7px;border: 2px solid #00a43e;}
-.car-item{font-size:12px;color:#666;padding:10px;background-color: #fff;margin-bottom:8px;border-radius:5px;}
-.car-item .iconfont{padding-right:10px;font-size:10px;}
+
+.car-item{font-size:12px;color:#666;padding:10px;background-color: #fff;margin-bottom:8px;border-radius:5px;line-height:20px;}
+.orderStatus{line-height:30px;margin-bottom:5px;color:#333;}
+.status{text-align: right;color:#00a43e;}
+.car-item .iconfont{font-size:10px;color:#999;}
+.item .iconfont{padding-right:10px;}
 .loadmore{text-align: center;font-size:13px;color:#666;padding:10px 0;}
 .addCar{width:50px;height:50px;text-align: center;background-color: #00a43e;color:#fff;font-size:15px;line-height:18px;border-radius:50%;
   padding:7px 10px;box-sizing: border-box;position: fixed;right:5px;bottom:100rpx;}
 .wd50{float: left;width:50%;}
+.red{color:#999;}

@@ -18,17 +18,22 @@
     <view class="title">最新消息</view>
     <view class="car-lists">
       <navigator url="/pages/detail/detail?id={{item.id}}" class="car-item" wx:for="{{lists}}" wx:key="item.id">
-        <view class="time">
-          <icon class="iconfont icon-time"></icon> {{item.startTime}}
+        <view class="orderStatus wbox">
+          <text class="wbox-flex">{{item.orderType===1?"车找人":"人找车"}}</text>
+          <view wx:if="{{item.orderStatus===1}}" class="status wbox-flex">进行中 <icon class="iconfont icon-arrow" size="12px"/></view>
+          <view wx:else class="status wbox-flex red">已结束 <icon class="iconfont icon-arrow" size="12px"/></view>
         </view>
-        <view class="startPlace ">
-          <icon class="iconfont icon-dot"></icon>{{item.startPlace}}
+        <view class="item time">
+          <icon class="iconfont icon-time" size="12px"/> {{item.startTime}}
         </view>
-        <view class="endPlace ">
-          <icon class="iconfont icon-dot icon-end"></icon>{{item.destination}}
+        <view class="item startPlace" >
+          <icon class="iconfont icon-address" size="12px"/>{{item.startPlace}} <text style="color:#999;">—></text>  {{item.destination}}
         </view>
-        <view class="personNum">
-          <icon class="iconfont icon-person"></icon>{{item.seatCount}}人
+        <!-- <view class="endPlace wd50">
+          <icon class="iconfont icon-dot icon-end" size="12px"/>{{item.destination}}
+        </view> -->
+        <view class="item personNum">
+          <icon class="iconfont icon-person" size="12px"/>{{item.seatCount}}人
         </view>
         <!-- <view class="tel">
           <text class="label">联系电话：</text>{{item.mobile}}

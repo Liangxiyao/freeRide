@@ -25,7 +25,7 @@ const years = [];
  * 年份：当前年份 往后延五年 
  */
 const beginYear = new Date().getFullYear();
-for (var i = beginYear; i <= beginYear+5; i++) {
+for (var i = beginYear; i <= beginYear+1; i++) {
   years.push(i + "年");
 }
 const months = [];
@@ -41,7 +41,7 @@ for (var i = 0; i < 24; i++) {
   hours.push(leftPad0(i, 2) + "时");
 }
 const minutes = [];
-for (var i = 0; i < 60; i++) {
+for (var i = 0; i < 60; i+=10) {
   minutes.push(leftPad0(i, 2) + "分");
 }
 
@@ -124,6 +124,7 @@ Component({
       })
     },
     handleColumnChange(e) {
+      console.log(e)
       if (e.detail.column > 1) return false;
       let year = this.data.pickerYear;
       let month = this.data.pickerMonth;
@@ -135,6 +136,7 @@ Component({
       this._settMonthDays(year, month);
     },
     handleValueChange(e) {
+      console.log(e)
       let dateArr = [];
       for (let i in e.detail.value) {
         let v = this.data.rangeValues[i][e.detail.value[i]];
