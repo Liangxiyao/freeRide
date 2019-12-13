@@ -53,7 +53,7 @@ Page({
     let that = this
     let rule = that.checkedAddress() && that.checkedTime()  && that.checkedPhone(e.detail.value) 
     if (rule) {
-      let { orderType, date, time, start, end, seatIndex, seat } = that.data
+      let { orderType, date, start, end, seatIndex, seat, person, personIndex} = that.data
       let seatCount = orderType === 1 ? parseInt(seat[seatIndex]) : parseInt(person[personIndex]) //剩余座位或同行人
       let addressType = start[1] == end[1] ? 1 : 2  //订单类型
       

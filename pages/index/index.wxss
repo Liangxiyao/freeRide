@@ -1,7 +1,7 @@
 /**index.wxss**/
 .swiper{height:370rpx;}
 .slide-image{width:100%;height:370rpx;}
-.main{padding:15px;}
+.main{margin:10px;}
 .search{position: relative;padding:10px 0;margin:0 15px;}
 .search-input{border:1px solid #ddd;border-radius:15px;font-size:13px;padding:5px 30px 5px 10px;}
 .icon-search{width:20px;height:30px;position: absolute;top:50%;margin-top:-9px;right:13px;}
@@ -9,12 +9,13 @@
 .title::before{content:'';position: absolute;left:0;top:7px;bottom:7px;border: 2px solid #00a43e;}
 
 .car-item{font-size:12px;color:#666;padding:10px;background-color: #fff;margin-bottom:8px;border-radius:5px;line-height:20px;}
-.orderStatus{line-height:30px;margin-bottom:5px;color:#333;}
+.orderStatus{line-height:30px;margin-bottom:5px;color:#000;font-size:14px;}
 .status{text-align: right;color:#00a43e;}
 .car-item .iconfont{font-size:10px;color:#999;}
 .item .iconfont{padding-right:10px;}
+.item .icon-to{padding:0 5px; color:#999;font-size:14px;}
 .loadmore{text-align: center;font-size:13px;color:#666;padding:10px 0;}
 .addCar{width:50px;height:50px;text-align: center;background-color: #00a43e;color:#fff;font-size:15px;line-height:18px;border-radius:50%;
   padding:7px 10px;box-sizing: border-box;position: fixed;right:5px;bottom:100rpx;}
 .wd50{float: left;width:50%;}
-.red{color:#999;}
+.end{color:#999;}

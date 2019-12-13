@@ -136,7 +136,8 @@ Component({
       this._settMonthDays(year, month);
     },
     handleValueChange(e) {
-      console.log(e)
+      console.log(e.detail.value)
+      console.log(this.data.rangeValues)
       let dateArr = [];
       for (let i in e.detail.value) {
         let v = this.data.rangeValues[i][e.detail.value[i]];

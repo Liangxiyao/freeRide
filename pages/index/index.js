@@ -15,6 +15,16 @@ Page({
     hasNextPage: true,
     page:1
   },
+  /**
+   * 右上角点击转发
+   */
+  onShareAppMessage: function (res) {
+    return {
+      title: "顺风车",
+      path: "/pages/index/index",
+      imageUrl:""
+    }
+  },
   onLoad(options) {
     this._getFreeRide()  
   },

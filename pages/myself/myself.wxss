@@ -1,9 +1,10 @@
 /* pages/myself/myself.wxss */
 
 .hd{background-color: #fff;padding:15px;line-height:14px;align-items: center;justify-content: center;border-radius:0;}
-.hd .user-photo{width:60px;height:60px;border-radius:50%;overflow: hidden;border: 1rpx solid #ddd;padding:10px;background-color: #fff;}
-.hd .user-name{font-size:14px;color:#777;text-align: left;margin-left:15px;}
-.bd{margin:15px;background-color: #fff;border-radius:5px;}
+.hd .user-photo{width:60px;height:60px;border-radius:50%;overflow: hidden;border:2px solid #f2f2f2;padding:10px;background-color: #fff;}
+.hd .user-info{text-align: left;padding-left:10px;font-size:14px;color:#333;}
+.hd .user-score{margin-top:15px;font-size:12px;color:#999;}
+.bd{margin:10px;background-color: #fff;border-radius:5px;padding:0 10px;}
 .bd .item{padding:10px 15px;line-height:25px;align-items: center;justify-content: center;font-size:14px;}
 .bd .item:last-of-type::after{display:none;}
-.bd .item .iconfont{color:#ccc;}
+.bd .item .iconfont{color:#666;font-size:10px;}

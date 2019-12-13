@@ -2,23 +2,34 @@
 <view class="page-myself">
   <button class="hd wbox" open-type="getUserInfo" bindgetuserinfo="getUserInfoHandle">
     <image src="{{userInfo.avatarUrl?userInfo.avatarUrl:'../../assets/images/my1.png'}}" class="user-photo"></image>
-    <text class="user-name wbox-flex">{{userInfo.nickName?userInfo.nickName:"请登录"}}</text>
+    <view class="user-info wbox-flex">
+      <text class="user-name ">{{userInfo.nickName?userInfo.nickName:"请登录"}}</text>
+      <view class="user-score">信用值：</view>
+    </view>
     <!-- <open-data type="userAvatarUrl" class="user-photo"></open-data>
     <open-data type="userNickName" class="user-name wbox-flex"></open-data> -->
   </button>
  
   <view class="bd">
     <view class="item wbox bdb">
-      <view class="txt wbox-flex">我发布的</view>
+      <view class="txt wbox-flex">我的订单</view>
       <icon class="iconfont icon-arrow"/>
     </view>
     <view class="item wbox bdb">
-      <view class="txt wbox-flex">个人信息</view>
-      <icon class="iconfont icon-arrow"/>
+      <view class="txt wbox-flex">我的消息</view>
+      <icon class="iconfont icon-arrow" size="12px"/>
+    </view>
+    <view class="item wbox bdb">
+      <view class="txt wbox-flex">意见反馈</view>
+      <icon class="iconfont icon-arrow" size="12px"/>
     </view> 
     <view class="item wbox bdb">
-      <view class="txt wbox-flex">个人信息</view>
-      <icon class="iconfont icon-arrow"/>
+      <view class="txt wbox-flex">联系客服</view>
+      <icon class="iconfont icon-arrow" size="12px"/>
+    </view>
+    <view class="item wbox bdb">
+      <view class="txt wbox-flex">退出登录</view>
+      <icon class="iconfont icon-arrow" size="12px"/>
     </view>
   </view>
 </view>

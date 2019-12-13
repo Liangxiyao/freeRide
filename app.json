@@ -1,9 +1,12 @@
 {
   "pages": [ 
     "pages/index/index",
-    "pages/addInfo/addInfo",
+    "pages/authorize/authorize",
     "pages/myself/myself",
-    "pages/detail/detail"
+
+    "pages/detail/detail",
+
+    "pages/addInfo/addInfo"
 
   ],
   "window": {
@@ -11,7 +14,8 @@
     "navigationBarBackgroundColor": "#00a43e",
     "navigationBarTitleText": "顺风车",
     "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": true
+    "enablePullDownRefresh": true,
+    "withShareTicket":true 
   },
   "tabBar": {
     "color": "#333",
