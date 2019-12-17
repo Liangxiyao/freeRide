@@ -1,6 +1,7 @@
 //app.js
 import HTTP from './utils/http'
 App({
+  navigateToLogin:false,
     //启动时候触发，只触发一次
   onLaunch: function () {
     this.checkNetwork()
@@ -9,7 +10,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    
   },
 
   onPageNotFound(res){
@@ -86,20 +86,55 @@ App({
             code:res.code
           }).then((res) => { 
             if (res.code === 0) {
-              wx.setStorage({
-                key:"token",
-                data: res.res
-              })
+              wx.setStorageSync('token', res.res)
             }
           }).catch((err) => {
             
-          });
+          })
         } else {
           console.log(res.errMsg)
         }
       }
     })
   },
-                     
+   /**
+    * 跳转认证页面
+    */
+  goLoginPageTimeOut: function() {
+    if (this.navigateToLogin){
+      return
+    }
+    wx.removeStorageSync('token')
+    this.navigateToLogin = true
+    setTimeout(()=>{
+      wx.navigateTo({
+        url: "/pages/authorize/authorize"
+      })
+    }, 1000)
+  },
+  /**
+   *  检测登录状态
+   */
+  checkLoginStatus(){ 
+    const _this = this
+    const token = wx.getStorageSync('token');
+    if (!token) {
+      _this.goLoginPageTimeOut()
+      return
+    }
+    // WXAPI.checkToken(token).then((res) => {
+    //   if (res.code != 0) {
+    //     wx.removeStorageSync('token')
+    //     _this.goLoginPageTimeOut()
+    //     return
+    //   }
+    // })
+    wx.checkSession({
+      fail() {
+        _this.goLoginPageTimeOut()
+        return
+      }
+    })
+  },                
     
 })
