@@ -1,5 +1,3 @@
-<!--pages/addInfo/addInfo.wxml-->
-
 <view class="page-addinfo">
   <!-- <view class="header">
     <view class="tab-item {{orderType===1?'cur':''}}" data-type="{{1}}" bindtap="tabChange"><text class="txt">车找人</text></view>
@@ -9,46 +7,20 @@
     <form  class="forms" bindsubmit="formSubmit" bindreset="formReset">
       <view class="item">
         <view class="label">始发地</view>
-        <picker class="input"  mode="region" bindchange="bindStart" value="{{start}}">
-          <view class="picker">{{start[0]}}-{{start[1]}}-{{start[2]}}</view>
-        </picker>
+        <picker class="input" bindchange="bindStart" value="{{startIndex}}" range="{{address}}">
+          <view class="picker">{{startIndex?address[startIndex]:"请选择始发地"}}</view>
+        </picker >
       </view>
       <view class="item">
         <view class="label">目的地</view>
-        <picker class="input" mode="region" bindchange="bindEnd" value="{{end}}">
-          <view class="picker">{{end[0]}}-{{end[1]}}-{{end[2]}}</view>
+        <picker class="input"  bindchange="bindEnd" value="{{endIndex}}" range="{{address}}">
+          <view class="picker">{{endIndex?address[endIndex]:'请选择目的地'}}</view>
         </picker>
       </view>
       <view class="item">
         <view class="label">出发时间</view>
-        <date-picker class="input" value="{{initDate}}" bindchange="dateChange">{{date}}</date-picker>
-        <!-- <picker class="input" mode="date" value="{{date}}" start="{{date}}" end="2020-09-01" bindchange="bindDateChange">
-          <view class="picker">{{date}}</view>
-        </picker> -->
-        <!-- <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange">
-          <picker-view-column class="picker-text">
-            <view wx:for="{{years}}" style="line-height: 50px">{{item}}</view>
-          </picker-view-column>
-          <picker-view-column class="picker-text">
-            <view wx:for="{{months}}" style="line-height: 50px">{{item}}</view>
-          </picker-view-column>
-          <picker-view-column class="picker-text">
-            <view wx:for="{{days}}" style="line-height: 50px">{{item}}</view>
-          </picker-view-column>
-           <picker-view-column class="picker-text">
-            <view wx:for="{{hours}}" style="line-height: 50px">{{item}}</view>
-          </picker-view-column>
-           <picker-view-column class="picker-text">
-            <view wx:for="{{minutes}}" style="line-height: 50px">{{item}}</view>
-          </picker-view-column>
-        </picker-view> -->
+        <date-picker class="input picker" value="{{initDate}}" bindchange="dateChange">{{date}}</date-picker>
       </view>
-      <!-- <view class="item">
-        <view class="label">出发时间</view>
-        <picker class="input" mode="time" value="{{time}}" start="{{time}}" end="23:59" bindchange="bindTimeChange">
-          <view class="picker">{{time}}</view>
-        </picker>
-      </view> -->
       <view class="item" wx:if="{{orderType===1}}">
         <view class="label">剩余座位</view>
         <picker class="input" bindchange="bindSeatNum" value="{{seatIndex}}" range="{{seat}}">
@@ -65,13 +37,6 @@
         <view class="label">联系人</view>
         <input name="contact" class="input" value="{{formInput}}" placeholder="某先生/某女士"/>
       </view>
-      <!-- <view class="item">
-        <view class="label">性别</view>
-        <radio-group  class="radio-group" name="gender" bindchange="radioChange">
-          <label><radio value="男" checked/>男</label>
-          <label><radio value="女"/>女</label>
-        </radio-group>
-      </view> -->
       <view class="item">
         <view class="label">联系电话</view>
         <input name="mobile" class="input" value="{{formInput}}" placeholder="请确保电话正确，方便联系" type="number"/>

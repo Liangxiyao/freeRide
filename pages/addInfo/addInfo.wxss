@@ -16,6 +16,4 @@
 .radio-group radio{transform:scale(0.7);}
 .radio-group label{margin-right:10px;}
 .textarea{height:160rpx;}
-/* 
-.progress .label{width:120px;} */
-.progress-line{flex:75px 1;}
+.forms .picker{color:#666;}

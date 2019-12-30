@@ -21,7 +21,7 @@
 .end{color:#999;}
 
 .filter{display:flex;padding:15px;background-color: #fff;}
-.filter .input{flex:1;margin-left:10px;height:30px;line-height:30px;text-align: center;overflow: hidden;
+.filter .input{flex:1;margin-left:10px;height:30px;line-height:30px;overflow: hidden;padding:0 5px;
   border-radius:5px;color:#666;font-size:13px;border: 1px solid #ddd;}
 .filter .input:first-of-type{margin-left:0;}
 .filter .iconfont{color:#999;font-size: 16px;line-height:35px;padding-left:10px;}

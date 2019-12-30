@@ -10,16 +10,14 @@ Page({
     autoplay: true,
     circular: true,
     interval: 3000,
-    indicatorColor: '#ccc',
-    imgUrl: [],
+    indicatorColor: '#ddd',
     lists: [],
     hasNextPage: true,
     page: 1,
-    filter: {
-      start: ['','始发地',''],
-      end: ['','目的地',''],
-      date:formatTime(new Date(),1)
-    }
+    address: app.globalData.address,
+    startIndex: '', //默认始发站
+    endIndex: '',  //默认目的地
+    date:formatTime(new Date(),1)
   },
   /**
    * 右上角点击转发
@@ -33,8 +31,9 @@ Page({
   },
   onLoad() {
     this.listRequest()  
+    this.bannerFn()
   },
-  //上拉刷新
+  //下拉刷新
   onPullDownRefresh(){
   },
   //上拉加载
@@ -49,7 +48,7 @@ Page({
       })
     }
   },
-  //获取用户信息授权 、发布信息入口
+  //发布信息入口、获取用户信息授权 
   getUserInfoHandle(e) {
     if (e.detail.userInfo) {
       wx.setStorage({
@@ -70,46 +69,68 @@ Page({
   },
   bindStart: function (e) {
     this.setData({
-      ["filter.start"]: e.detail.value,
+      startIndex: e.detail.value,
       page: 1,
     })
-    let filterData = this.data.filter
-    this.listRequest(filterData)
+    let { startIndex, endIndex, date, address} = this.data
+    this.listRequest({
+      start: address[startIndex],
+      end: address[endIndex],
+      date
+    })
   },
   bindEnd: function (e) {
     this.setData({
-      ["filter.end"]: e.detail.value
+      endIndex: e.detail.value
     })
-    let filterData = this.data.filter
-    this.listRequest(filterData)
+    let { startIndex, endIndex, date, address} = this.data
+    this.listRequest({
+      start: address[startIndex],
+      end: address[endIndex],
+      date
+    })
   },
   bindDateChange: function (e) {
     this.setData({
-      ["filter.date"]: e.detail.value
+      date: e.detail.value
+    })
+    let { startIndex, endIndex, date, address} = this.data
+    this.listRequest({
+      start: address[startIndex],
+      end: address[endIndex],
+      date
     })
   },
   listRequest(data) {
     HTTP.apiFreeRide(data).then((res) => {
-      if (res.code == 0) {
-        let { items, hasNextPage } = res
-        let oldData = this.data.lists
-        let lists = oldData.concat(items)
+      let { items, hasNextPage } = res
+      let oldData = this.data.lists
+      let lists = oldData.concat(items)
+      this.setData({
+        lists,
+        hasNextPage
+      })  
+    }).catch((err) => {
+      wx.showToast({
+        title: err.msg,
+        icon:'none',
+        duration: 2000
+      })
+    });
+  },
+  bannerFn() {
+    HTTP.apiBanner().then((result) => {
+      if (result.code === 0) {
         this.setData({
-          lists,
-          hasNextPage
-        })  
-      } else {
+          banner:result.res.ad
+        })
+      }else {
         wx.showToast({
-          title: res.errMsg,
+          title: result.errMsg,
           icon:'none',
           duration: 2000
         })
       }
-    }).catch((err) => {
-      
-    });
-  },
-  focusFn(e) {
-    console.log(e.currentTarget)
+    })
   }
 })

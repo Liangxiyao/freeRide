@@ -3,7 +3,8 @@ import HTTP from './utils/http'
 App({
   globalData: {
     userInfo: null,
-    isConnected:false
+    isConnected: false,
+    address: ["北京","三门峡","灵宝","渑池","卢氏","义马","洛阳"]
   },
     //启动时候触发，只触发一次
   onLaunch: function () {
@@ -35,10 +36,7 @@ App({
         wx.showToast({
           title: '网络已断开',
           icon: 'loading',
-          duration: 2000,
-          // complete: function() {
-          //   that.goStartIndexPage()
-          // }
+          duration: 2000
         })
       } else {
         wx.hideToast()

@@ -1,28 +1,25 @@
 <view class="page-index">
-  <!-- <view class="search">
-    <input class="search-input" maxlength="10" placeholder="请输入搜索内容"/>
-    <icon class="icon-search" type="search" size="16"/>
-  </view> -->
   <view class="filter">
-    <picker class="input"  mode="region" bindchange="bindStart" value="{{filter.start}}">
-      <view class="picker">{{filter.start[1]+filter.start[2]}}</view>
-    </picker>
+    <picker class="input" bindchange="bindStart" value="{{startIndex}}" range="{{address}}">
+      <view class="picker">{{startIndex?address[startIndex]:"始发地"}}</view>
+    </picker >
     <icon class="iconfont icon-to" size="14px"></icon>
-    <picker class="input"  mode="region" bindchange="bindEnd" value="{{filter.end}}">
-      <view class="picker">{{filter.end[1]+filter.end[2]}}</view>
+    <picker class="input"  bindchange="bindEnd" value="{{endIndex}}" range="{{address}}">
+      <view class="picker">{{endIndex?address[endIndex]:'目的地'}}</view>
     </picker>
     <icon class="iconfont icon-date" size="14px"></icon>
-    <picker class="input date" mode="date" value="{{filter.date}}" start="{{filter.date}}" end="2030-09-01" bindchange="bindDateChange">
-      <view class="picker">{{filter.date}}</view>
+    <picker class="input date" mode="date" value="{{date}}" start="{{date}}" end="2030-09-01" bindchange="bindDateChange">
+      <view class="picker">{{date}}</view>
     </picker>
   </view>
   <swiper class="swiper"
-    indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" autoplay="{{autoplay}}" circular="{{circular}}"
+    indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="#999"
+    autoplay="{{autoplay}}" circular="{{circular}}"
     interval="{{interval}}"  next-margin="{{nextMargin}}px">
-    <block wx:for="{{imgUrl}}" wx:key="*this">
+    <block wx:for="{{banner}}" wx:key="*this">
       <swiper-item>
         <navigator url="/pages/logs/logs?cd=1">
-          <image src="{{item.image}}" class="slide-image"/>
+          <image src="{{item}}" class="slide-image"/>
         </navigator>
       </swiper-item>
     </block>

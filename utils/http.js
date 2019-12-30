@@ -9,17 +9,19 @@ const request = (url, params, method)=>{
   return new Promise((resolve, reject) => {
     let token = wx.getStorageSync('token') 
     wx.request({
-      url: `${API_URI}/${url}`,
+      url: `${API_URI}${url}`,
       data: params,
-      header:{'token':token?token:''},
-      methods: method || 'GET',
+      header: {
+        'token': token ? token : ''
+        //"Content-Type": "application/x-www-form-urlencoded"
+      },
+      method: method || 'GET',
       success(res) {
         wx.hideLoading()
         const isSuccess = isHttpSuccess(res.statusCode);
         // 成功的请求状态
         if (isSuccess) { 
           let { code, message } = res.data
-          //登陆成功
           if (code === 0) { 
             resolve(res.data);
           } else if (code === 600010) {//token过期
@@ -54,12 +56,17 @@ const request = (url, params, method)=>{
           }      
         } else {
           reject({
-            msg: `网络错误:${res.statusCode}`,
-            detail: res.msg
+            msg: `网络错误:${res.statusCode}`
           });
         }
       } ,
-      fail: reject
+      fail() {
+        wx.showToast({
+          title: '出错了~~',
+          icon:'none',
+          duration: 2000
+        })
+      }
     })
   })
 }
@@ -70,7 +77,8 @@ function isHttpSuccess(status) {
 const http = {
   request,
   apiLogin: p => request('/user/login', p),
-  apiFreeRide: p => request('/freeRide/list', p),
+  apiBanner: p => request('/common/index', p, 'POST'),
+  apiFreeRide: p => request('/freeRide/list', p, 'POST'),
   apiFreeRideDeatil: p => request('/freeRide/detail', p),
   apiAddOrder: p => request('/freeRide/pub', p, 'POST'),
   apiUpdateUser: p => request('/user/update', p)

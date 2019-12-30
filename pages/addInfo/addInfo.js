@@ -10,8 +10,9 @@ Page({
     date: DEFAULTDATE,
     formInput:'',
     orderType: 1,
-    start: ['请选择'],
-    end: ['请选择'],
+    address: app.globalData.address,
+    startIndex: '', //默认始发站
+    endIndex: '',  //默认目的地
     seatIndex: 0,
     seat: ['1座','2座','3座','4座','5座','6座'],
     personIndex:4,
@@ -50,27 +51,28 @@ Page({
    * 提交表单
   **/
   formSubmit: function (e) { 
-    console.log(e.detail.value)
+
     let that = this
     let checkedResult = that.checkedAddress() && that.checkedTime() && that.checkedContact(e.detail.value) && that.checkedPhone(e.detail.value) 
     if (checkedResult) {
-      let { orderType, date, start, end, seatIndex, seat, person, personIndex} = that.data
+      let { orderType, date, startIndex, endIndex, seatIndex, seat, person, personIndex, address} = that.data
       let seatCount = orderType === 1 ? parseInt(seat[seatIndex]) : parseInt(person[personIndex]) //剩余座位或同行人
-      let addressType = start[1] == end[1] ? 1 : 2  //订单类型
+      let addressType = address[startIndex] == address[endIndex] ? 1 : 2  //订单类型
       
       let data = {
         ...e.detail.value,
         orderType,
         addressType,
-        start:start.slice(1).join('-'),
-        end:end.slice(1).join('-'),
+        start:address[startIndex],
+        end:address[endIndex],
         time:timestamp(date),
         seatCount,
       }
       
-      HTTP.apiAddOrder({ ...data }).then((result) => {
+      HTTP.apiAddOrder({
+        ...data
+      }).then((result) => {
         let { code, message } = result
-        
         if (code === 0) {
           wx.navigateTo({
             url: '/pages/detail/detail',
@@ -101,8 +103,8 @@ Page({
       seatIndex: 0,
       personIndex: 0,
       formInput: '',
-      start: ['请选择'],
-      end: ['请选择'],
+      startIndex: '',
+      endIndex: '',
     })
   },
   /**
@@ -142,8 +144,8 @@ Page({
     }
   },
   checkedAddress() {
-    let { start, end } = this.data
-    if (start[0] != ['请选择'] && end[0] != ['请选择']) {
+    let { startIndex, endIndex } = this.data
+    if (startIndex != '' && endIndex != '') {
       return true
     } else {
       wx.showToast({
@@ -193,16 +195,13 @@ Page({
   //   })
   // },
   bindStart: function (e) {
-    
-    //let value = e.detail.value.slice(1)
-    //console.log(value)
     this.setData({
-      start: e.detail.value
+      startIndex: e.detail.value
     })
   },
   bindEnd: function (e) {
     this.setData({
-      end: e.detail.value
+      endIndex: e.detail.value
     })
   },
   radioChange: function (e) {    
