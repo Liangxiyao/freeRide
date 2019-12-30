@@ -1,17 +1,16 @@
 //app.js
 import HTTP from './utils/http'
 App({
+  globalData: {
+    userInfo: null,
+    isConnected:false
+  },
     //启动时候触发，只触发一次
   onLaunch: function () {
     this.checkNetwork()
     this.checkSession()
     this.getLogin()
   },
-  globalData: {
-    userInfo: null,
-    
-  },
-
   onPageNotFound(res){
   },
   /**
@@ -78,7 +77,7 @@ App({
    /**
     * 获取code
     */
-   getLogin() {
+  getLogin() {
     wx.login({
       success (res) {
         if (res.code) {  
@@ -86,20 +85,48 @@ App({
             code:res.code
           }).then((res) => { 
             if (res.code === 0) {
-              wx.setStorage({
-                key:"token",
-                data: res.res
-              })
+              wx.setStorageSync('token', res.res)
             }
           }).catch((err) => {
-            
+            wx.showToast({
+              title: err,
+              icon:'none',
+              duration: 2000
+            })
           });
-        } else {
-          console.log(res.errMsg)
         }
       }
     })
   },
-                     
+  /**
+   *获取用户设置
+   */
+  getSetting() {
+    wx.getSetting({
+      success(res) {  
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success: function (res) {
+              that.setData({
+               userInfo:res.userInfo
+              }) 
+              wx.setStorage({
+                key: 'userInfo',
+                data: res.userInfo
+              })
+            }
+          })
+        } else {
+          wx.navigateTo({
+            url: '/pages/authorize/authorize'
+          })
+        } 
+      },
+      fail(err){
+        console.log('fail'+err)
+      }
+    })
+  }
     
 })

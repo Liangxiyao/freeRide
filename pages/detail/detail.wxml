@@ -1,3 +1,4 @@
+
 <view class="page-detail">
   <!-- <view class="car-item">
     <view class="time">
@@ -20,38 +21,66 @@
     </view>
   </view> -->
   <view class="car-item">
-      <view class="time wd50">
-        {{detail.startTime}}
-      </view>
-      <view class="orderStatus wd50">
-        <view wx:if="{{detail.orderStatus===1}}" class="status wbox-flex">进行中</view>
-        <view wx:else class="status wbox-flex end">已结束</view>
-      </view>
-      <view class="item address bdb" >
-        {{detail.startPlace}}
-        <icon class="iconfont icon-to" size="14px"/>  
-        {{detail.destination}}
-      </view>
-      <!-- <view class="startPlace ">
-        <text class="label">始发地：</text>{{detail.startPlace}}
-      </view>
-      <view class="endPlace ">
-        <text class="label">目的地：</text>{{detail.destination}}
-      </view> -->
-      <view class="personNum">
-        <text class="label">可乘坐：</text>{{detail.seatCount}}人
-      </view>
-      <view class="person">
-          <text class="label">联系人：</text>{{detail.mobile}}
-        </view>
-      <view class="tel">
-        <text class="label">联系电话：</text>{{detail.mobile}}
-      </view>
-      <view class="mark" wx:if="{{detail.mark}}">
-          <text class="label">备注信息：</text>{{detail.mark}}
-      </view>
-      <view wx:if="{{detail.orderStatus===1}}">
-        <button class="btn primary">预约</button>
-      </view>
+    <view class="time">
+      {{detail.startTime}}
     </view>
+    <view class="item address bdb" >
+      {{detail.startPlace}}
+      <icon class="iconfont icon-to" size="14px"/>  
+      {{detail.destination}}
+    </view>
+    <!-- <view class="startPlace ">
+      <text class="label">始发地：</text>{{detail.startPlace}}
+    </view>
+    <view class="endPlace ">
+      <text class="label">目的地：</text>{{detail.destination}}
+    </view> -->
+    <view class="personNum">
+      <text class="label">可乘坐：</text>{{detail.seatCount}}人
+    </view>
+    <view class="person">
+      <text class="label">联系人：</text>{{detail.contact}}
+    </view>
+    <view class="tel">
+      <text class="label">联系电话：</text>{{detail.mobile}}
+      <icon class="iconfont icon-phone" size="14px" bindtap="tel"/>  
+    </view>
+    <view class="mark" wx:if="{{detail.mark}}">
+        <text class="label">备注信息：</text>{{detail.mark}}
+    </view>
+    <!-- <navigator url="/pages/apply/apply?num={{detail.seatCount}}">
+      <button class="btn primary" wx:if="{{detail.orderStatus===1}}">可预约</button>
+      <button class="btn default" wx:else disabled>已结束</button>
+    </navigator> -->
+    <!-- <view class="orderStatus wd50">
+      <view wx:if="{{detail.orderStatus===1}}" class="status wbox-flex">进行中</view>
+      <view wx:else class="status wbox-flex end">已结束</view>
+    </view> -->
+  </view>
+  <!-- 模态框 -->
+  <!-- <modal showModal="{{false}}" modal="{{modal}}">
+    <form  class="modal-forms" slot="modal-cont">
+      <view class="item">
+        <view class="label">联系人</view>
+        <input name="contact" class="input" value="{{formInput}}"/>
+      </view>
+      <view class="item">
+        <view class="label">性别</view>
+        <radio-group  class="radio-group" name="gender" bindchange="radioChange">
+          <label><radio value="男" checked/>男</label>
+          <label><radio value="女"/>女</label>
+        </radio-group>
+      </view>
+      <view class="item">
+        <view class="label">联系电话</view>
+        <input name="mobile" class="input" value="{{formInput}}"/>
+      </view>
+      <view class="item">
+        <view class="label">同行人数</view>
+        <picker class="input" bindchange="bindPersonNum" value="{{personIndex}}" range="{{person}}">
+          <view class="picker">{{person[personIndex]}}</view>
+        </picker>
+      </view>
+    </form>
+  </modal> -->
 </view>

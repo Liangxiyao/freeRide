@@ -6,4 +6,8 @@
 .orderStatus{text-align: right;}
 .address{text-align: center;font-size:16px;color:#333;clear: both;padding:10px 0;margin-bottom: 10px;}
 .address .iconfont{font-size:20px;color:#666;padding:0 10px;}
-.primary{background-color:#00a43e;color:#fff;height:40px;line-height:40px;margin-top:20px;font-size:15px;}
+.btn{height:40px;line-height:40px;margin-top:20px;font-size:15px;}
+/* .btn::after{border:none;} */
+.btn.primary{background-color:#00a43e;color:#fff;}
+.icon-phone{padding:0 10px;}
+

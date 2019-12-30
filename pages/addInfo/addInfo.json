@@ -2,6 +2,7 @@
   "navigationBarTitleText":"发布消息",
   "enablePullDownRefresh":false,
   "usingComponents": {    
-      "date-picker":"/temp/datepicker/datepicker"
+      "date-picker":"/temp/datepicker/datepicker",
+      "move-progress":"/temp/progress/progress"
   }
 }

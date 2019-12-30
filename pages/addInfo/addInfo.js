@@ -3,8 +3,6 @@ import HTTP from '../../utils/http'
 import { timestamp, formatTime } from '../../assets/js/util'
 
 const DEFAULTDATE = '请选择--'
-const DEFAULTSTART = ['请选择']
-const DEFAULTEND = ['请选择']
 
 Page({
   data: {
@@ -16,14 +14,16 @@ Page({
     end: ['请选择'],
     seatIndex: 0,
     seat: ['1座','2座','3座','4座','5座','6座'],
-    personIndex: 0,
+    personIndex:4,
     person: ['1人', '2人', '3人', '4人', '5人', '6人']
   },
   onLoad() {
-    console.log(formatTime(new Date(), 2))
 
+    // 进度条
+    // this.progress = this.selectComponent("#progress")
+    // this.progress.getPercent()
   },
-  handleChange(e) { 
+  dateChange(e) { 
     let checkedDate = e.detail.dateString
     let checkedTimestamp = timestamp(checkedDate)
     let nowTimestamp = timestamp(this.data.initDate)
@@ -50,9 +50,10 @@ Page({
    * 提交表单
   **/
   formSubmit: function (e) { 
+    console.log(e.detail.value)
     let that = this
-    let rule = that.checkedAddress() && that.checkedTime()  && that.checkedPhone(e.detail.value) 
-    if (rule) {
+    let checkedResult = that.checkedAddress() && that.checkedTime() && that.checkedContact(e.detail.value) && that.checkedPhone(e.detail.value) 
+    if (checkedResult) {
       let { orderType, date, start, end, seatIndex, seat, person, personIndex} = that.data
       let seatCount = orderType === 1 ? parseInt(seat[seatIndex]) : parseInt(person[personIndex]) //剩余座位或同行人
       let addressType = start[1] == end[1] ? 1 : 2  //订单类型
@@ -61,8 +62,8 @@ Page({
         ...e.detail.value,
         orderType,
         addressType,
-        start:start.join('-'),
-        end:end.join('-'),
+        start:start.slice(1).join('-'),
+        end:end.slice(1).join('-'),
         time:timestamp(date),
         seatCount,
       }
@@ -71,21 +72,11 @@ Page({
         let { code, message } = result
         
         if (code === 0) {
-          // wx.showToast({
-          //   title: '信息发布成功',
-          //   icon:'none',
-          //   duration: 2000,
-          //   success() {
-          //     //跳转详情
-              
-          //   }
-            
-          // })  
           wx.navigateTo({
             url: '/pages/detail/detail',
           })
           //表单重置
-          that.clearInfo()
+          that.formReset()
 
         } else {
           wx.showToast({
@@ -100,16 +91,38 @@ Page({
     }
 
   },
-  //重置
+  /**
+   * 表单重置
+   */
   formReset: function (e) {
-    this.clearInfo()
+    this.setData({
+      initDate: formatTime(new Date(),2),
+      date: '请选择--',
+      seatIndex: 0,
+      personIndex: 0,
+      formInput: '',
+      start: ['请选择'],
+      end: ['请选择'],
+    })
   },
   /**
    * 表单验证
    */
+  checkedContact(value) {
+    let contact = value.contact.replace(/(^\s*)|(\s*$)/g, "")
+    if (contact === '' || contact.length < 2) {
+      wx.showToast({
+        title: '请填写联系人',
+        icon:'none',
+        duration: 2000
+      })
+      return false
+    }else {
+      return true
+    }
+  },
   checkedPhone(value) {
     let mobile = value.mobile.replace(/(^\s*)|(\s*$)/g, "")
-
     if (mobile === '') {
       wx.showToast({
         title: '请填写联系电话',
@@ -130,7 +143,6 @@ Page({
   },
   checkedAddress() {
     let { start, end } = this.data
-
     if (start[0] != ['请选择'] && end[0] != ['请选择']) {
       return true
     } else {
@@ -175,12 +187,15 @@ Page({
       date: e.detail.value
     })
   },
-  bindTimeChange: function (e) {
-    this.setData({
-      time: e.detail.value
-    })
-  },
+  // bindTimeChange: function (e) {
+  //   this.setData({
+  //     time: e.detail.value
+  //   })
+  // },
   bindStart: function (e) {
+    
+    //let value = e.detail.value.slice(1)
+    //console.log(value)
     this.setData({
       start: e.detail.value
     })
@@ -192,22 +207,7 @@ Page({
   },
   radioChange: function (e) {    
     this.setData({
-      orderType:e.detail.value
-    })
-  },
-
-  /**
-   * 重置信息
-   */
-  clearInfo() {
-    this.setData({
-      initDate: formatTime(new Date(),2),
-      date: '请选择--',
-      seatIndex: 0,
-      personIndex: 0,
-      formInput: '',
-      start: ['请选择'],
-      end: ['请选择'],
+      gender:e.detail.value
     })
   }
 })

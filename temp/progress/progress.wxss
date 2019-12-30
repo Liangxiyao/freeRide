@@ -1,0 +1,50 @@
+.progress-root-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 68rpx;
+  position: relative;
+}
+
+.text {
+  font-size: 28rpx;
+  color: #333;
+  position: absolute;
+  left: 40rpx;
+  font-weight: 700;
+}
+
+.progress-max {
+  position: absolute;
+  height: 24rpx;
+  width:80%;
+  background: #d8d8d8;
+  border-radius: 30rpx;
+  z-index: 10;
+}
+
+.progress-current {
+  position: absolute;
+  left:0;
+  height: 24rpx;
+  width:80%;
+  background: #59B0FF;
+  border-radius: 30rpx;
+  z-index: 20;
+}
+
+.pencent-text {
+  font-size: 28rpx;
+  color: #59b0ff;
+  left:82%;
+  position: absolute;
+  z-index: 20;
+}
+
+.slice-button {
+  left: 0;
+  width: 68rpx;
+  height: 68rpx;
+  position: absolute;
+  z-index: 30;
+}

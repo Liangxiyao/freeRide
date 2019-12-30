@@ -1,13 +1,11 @@
 {
   "pages": [ 
     "pages/index/index",
+    "pages/detail/detail",
+    "pages/apply/apply",
     "pages/authorize/authorize",
     "pages/myself/myself",
-
-    "pages/detail/detail",
-
     "pages/addInfo/addInfo"
-
   ],
   "window": {
     "backgroundTextStyle": "light",

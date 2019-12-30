@@ -1,4 +1,4 @@
-import { toLogin } from './login'
+//import { userLogin } from './login'
 
 const API_URI = 'https://gaidiha.com/api'
 
@@ -23,7 +23,28 @@ const request = (url, params, method)=>{
           if (code === 0) { 
             resolve(res.data);
           } else if (code === 600010) {//token过期
-            toLogin()
+            wx.login({
+              success (res) {
+                if (res.code) {  
+                  http.apiLogin({
+                    code:res.code
+                  }).then((res) => { 
+                    if (res.code === 0) {
+                      wx.setStorage({
+                        key:"token",
+                        data: res.res
+                      })
+                    }
+                  }).catch((err) => {
+                    wx.showToast({
+                      title: err,
+                      icon:'none',
+                      duration: 2000
+                    })
+                  });
+                }
+              }
+            })
           } else {
             wx.showToast({
               title: message,
@@ -46,8 +67,7 @@ function isHttpSuccess(status) {
   return status >= 200 && status < 300 || status === 304;
 }
 
-
-export default {
+const http = {
   request,
   apiLogin: p => request('/user/login', p),
   apiFreeRide: p => request('/freeRide/list', p),
@@ -56,3 +76,6 @@ export default {
   apiUpdateUser: p => request('/user/update', p)
 
 }
+
+
+export default http

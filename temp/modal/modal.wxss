@@ -1,0 +1,43 @@
+.wbox {display: -webkit-flex;display: -webkit-box;display: box;display: flex;}
+.wbox-flex {-webkit-flex: 1!important;-webkit-box-flex: 1;}
+.mask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  z-index: 9000;
+  opacity: 0.7;
+}
+
+.modal{
+  width:75%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  background-color: #fff;
+  border-radius:14rpx;
+  padding:15px;
+}
+.modal-title{
+  font-size:16px;
+  text-align: center;
+  margin-bottom:20px;
+  color:#000;
+}
+.modal-content{
+  font-size:13px;
+}
+.modal-btn .btn{
+  flex:1;
+}
+.modal-btn .no{
+  margin-right:15px;
+}
+.modal-btn .yes{
+  background-color:#00a43e;
+  color: #fff;
+}

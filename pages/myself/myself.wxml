@@ -4,10 +4,8 @@
     <image src="{{userInfo.avatarUrl?userInfo.avatarUrl:'../../assets/images/my1.png'}}" class="user-photo"></image>
     <view class="user-info wbox-flex">
       <text class="user-name ">{{userInfo.nickName?userInfo.nickName:"请登录"}}</text>
-      <view class="user-score">信用值：</view>
+      <!-- <view class="user-score">信用值：</view> -->
     </view>
-    <!-- <open-data type="userAvatarUrl" class="user-photo"></open-data>
-    <open-data type="userNickName" class="user-name wbox-flex"></open-data> -->
   </button>
  
   <view class="bd">
@@ -27,9 +25,9 @@
       <view class="txt wbox-flex">联系客服</view>
       <icon class="iconfont icon-arrow" size="12px"/>
     </view>
-    <view class="item wbox bdb">
+    <!-- <view class="item wbox bdb">
       <view class="txt wbox-flex">退出登录</view>
       <icon class="iconfont icon-arrow" size="12px"/>
-    </view>
+    </view> -->
   </view>
 </view>

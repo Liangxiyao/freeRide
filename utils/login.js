@@ -11,8 +11,7 @@ export function userLogin() {
     }
   })
 }
- 
-export function toLogin() {
+function toLogin() {
   wx.login({
     success: function (res) {
       if (res.code) {
@@ -22,10 +21,7 @@ export function toLogin() {
           //code:"5db78ffb5277b054fd31"
         }).then((res) => { 
           if (res.code === 0) {
-            wx.setStorage({
-              key:"token",
-              data: res.res
-            })
+            wx.setStorage('token',res.res)
           }
           console.log(wx.getStorageSync('token'))
         }).catch((err) => {
@@ -36,8 +32,7 @@ export function toLogin() {
     fail: function (res) {
       console.log(res)
     }
-  })
- 
+  }) 
 }
  
 export function getUserInfo() {

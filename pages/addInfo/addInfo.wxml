@@ -1,10 +1,10 @@
 <!--pages/addInfo/addInfo.wxml-->
 
 <view class="page-addinfo">
-  <view class="header">
+  <!-- <view class="header">
     <view class="tab-item {{orderType===1?'cur':''}}" data-type="{{1}}" bindtap="tabChange"><text class="txt">车找人</text></view>
     <view class="tab-item {{orderType===2?'cur':''}}" data-type="{{2}}" bindtap="tabChange"><text class="txt">人找车</text></view>
-  </view>
+  </view> -->
   <view class="main">
     <form  class="forms" bindsubmit="formSubmit" bindreset="formReset">
       <view class="item">
@@ -21,7 +21,7 @@
       </view>
       <view class="item">
         <view class="label">出发时间</view>
-        <date-picker class="input" value="{{initDate}}" bindchange="handleChange">{{date}}</date-picker>
+        <date-picker class="input" value="{{initDate}}" bindchange="dateChange">{{date}}</date-picker>
         <!-- <picker class="input" mode="date" value="{{date}}" start="{{date}}" end="2020-09-01" bindchange="bindDateChange">
           <view class="picker">{{date}}</view>
         </picker> -->
@@ -63,11 +63,22 @@
       </view>
       <view class="item">
         <view class="label">联系人</view>
-        <input name="contact" class="input" value="{{formInput}}"/>
+        <input name="contact" class="input" value="{{formInput}}" placeholder="某先生/某女士"/>
       </view>
+      <!-- <view class="item">
+        <view class="label">性别</view>
+        <radio-group  class="radio-group" name="gender" bindchange="radioChange">
+          <label><radio value="男" checked/>男</label>
+          <label><radio value="女"/>女</label>
+        </radio-group>
+      </view> -->
       <view class="item">
         <view class="label">联系电话</view>
-        <input name="mobile" class="input" value="{{formInput}}" required/>
+        <input name="mobile" class="input" value="{{formInput}}" placeholder="请确保电话正确，方便联系" type="number"/>
+      </view>
+      <view class="item progress">
+        <view class="label">车费(元/人)</view>
+        <input name="price" type="digit" class="input" value="{{formInput}}" placeholder="若不填，则为面议"/>
       </view>
       <view class="item">
         <view class="label">备注信息</view>
