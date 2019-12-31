@@ -1,31 +1,31 @@
 <view class="page-index">
-  <view class="filter">
-    <picker class="input" bindchange="bindStart" value="{{startIndex}}" range="{{address}}">
-      <view class="picker">{{startIndex>=0?address[startIndex]:"始发地"}}</view>
-    </picker >
-    <icon class="iconfont icon-to" size="14px"></icon>
-    <picker class="input"  bindchange="bindEnd" value="{{endIndex}}" range="{{address}}">
-      <view class="picker">{{endIndex>=0?address[endIndex]:'目的地'}}</view>
-    </picker>
-    <icon class="iconfont icon-date" size="14px"></icon>
-    <picker class="input date" mode="date" value="{{date}}" start="{{date}}" end="2030-09-01" bindchange="bindDateChange">
-      <view class="picker">{{date}}</view>
-    </picker>
-  </view>
   <swiper class="swiper"
     indicator-dots="{{indicatorDots}}" indicator-color="{{indicatorColor}}" indicator-active-color="#999"
     autoplay="{{autoplay}}" circular="{{circular}}"
     interval="{{interval}}"  next-margin="{{nextMargin}}px">
     <block wx:for="{{banner}}" wx:key="*this">
       <swiper-item>
-        <navigator url="/pages/logs/logs?cd=1">
-          <image src="{{item}}" class="slide-image"/>
-        </navigator>
+        <image src="{{item}}" class="slide-image"/>
       </swiper-item>
     </block>
   </swiper> 
+  
   <view class="main">
     <view class="title">最新消息</view>
+    
+    <view class="filter">
+      <picker class="input" bindchange="bindStart" value="{{startIndex}}" range="{{address}}">
+        <view class="picker">{{startIndex>=0?address[startIndex]:"始发地"}}</view>
+      </picker >
+      <icon class="iconfont icon-to" size="14px"></icon>
+      <picker class="input"  bindchange="bindEnd" value="{{endIndex}}" range="{{address}}">
+        <view class="picker">{{endIndex>=0?address[endIndex]:'目的地'}}</view>
+      </picker>
+      <icon class="iconfont icon-date" size="14px"></icon>
+      <picker class="input date" mode="date" value="{{date}}" start="{{date}}" end="2030-09-01" bindchange="bindDateChange">
+        <view class="picker">{{date}}</view>
+      </picker>
+    </view>
     <view class="car-lists">
       <navigator url="/pages/detail/detail?id={{item.id}}" class="car-item" wx:for="{{lists}}" wx:key="item.id">
         <view class="orderStatus wbox">

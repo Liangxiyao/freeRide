@@ -20,8 +20,8 @@
 .wd50{float: left;width:50%;}
 .end{color:#999;}
 
-.filter{display:flex;padding:15px;background-color: #fff;}
-.filter .input{flex:1;margin-left:10px;height:30px;line-height:30px;overflow: hidden;padding:0 5px;
-  border-radius:5px;color:#666;font-size:13px;border: 1px solid #ddd;}
+.filter{display:flex;margin:20rpx 0;}
+.filter .input{flex:1;margin-left:10rpx;height:30px;line-height:30px;overflow: hidden;padding:0 5px;background-color: #fff;
+  border-radius:5px;color:#666;font-size:12px;border: 1px solid #ddd;}
 .filter .input:first-of-type{margin-left:0;}
-.filter .iconfont{color:#999;font-size: 16px;line-height:35px;padding-left:10px;}
+.filter .iconfont{color:#999;font-size: 16px;line-height:35px;padding-left:10rpx;}

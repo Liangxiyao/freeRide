@@ -15,14 +15,16 @@ Page({
     HTTP.apiFreeRideDeatil({
       id:orderId
     }).then((result) => {
-      if (result.code == 0) {
-        let { res } = result
-        this.setData({
-          detail: res
-        })
-      }
+      let { res } = result
+      this.setData({
+        detail: res
+      })
     }).catch((err) => {
-      
+      wx.showToast({
+        title: err.msg,
+        icon:'none',
+        duration: 2000
+      })
     });
   },
   tel () {

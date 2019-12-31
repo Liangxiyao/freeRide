@@ -67,23 +67,18 @@ Page({
       HTTP.apiAddOrder({
         ...data
       }).then((result) => {
-        let { code, message } = result
-        if (code === 0) {
           wx.navigateTo({
-            url: '/pages/detail/detail',
+            url: `/pages/detail/detail?id=${result.res}`,
           })
-          //表单重置
-          that.formReset()
-
-        } else {
-          wx.showToast({
-            title: message,
-            icon:'none',
-            duration: 2000
-          })
-        }
-      }).catch((err) => {
+        //表单重置
+        that.formReset()
         
+      }).catch((err) => {
+        wx.showToast({
+          title: err.msg,
+          icon:'none',
+          duration: 2000
+        })
       });
     }
 
@@ -106,7 +101,7 @@ Page({
    * 表单验证
    */
   checkedContact(value) {
- 
+    let contact = value.contact.replace(/(^\s*)|(\s*$)/g, "")
     if (contact === '') {
       wx.showToast({
         title: '请填写联系人',

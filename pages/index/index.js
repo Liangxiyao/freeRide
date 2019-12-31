@@ -123,17 +123,15 @@ Page({
   },
   bannerFn() {
     HTTP.apiBanner().then((result) => {
-      if (result.code === 0) {
-        this.setData({
-          banner:result.res.ad
-        })
-      }else {
-        wx.showToast({
-          title: result.errMsg,
-          icon:'none',
-          duration: 2000
-        })
-      }
-    })
+      this.setData({
+        banner:result.res.ad
+      })
+    }).catch((err) => {
+      wx.showToast({
+        title: err.msg,
+        icon:'none',
+        duration: 2000
+      })
+    });
   }
 })

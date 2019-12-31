@@ -14,23 +14,7 @@ Page({
       that.setData({
         userInfo:userInfo
       })
-    }
-
-    // wx.getStorage({
-    //   key: 'userInfo',
-    //   success: function (res) {
-    //     that.setData({
-    //       userInfo:res.data
-    //     })
-    //   },
-    //   fail: function (err) {
-    //     wx.showModal({
-    //       title: err.errMsg,
-    //       icon:'none',
-    //       duration: 2000
-    //     })
-    //   }
-    // })    
+    }  
   },
   getUserInfoHandle(e) { 
     let that = this

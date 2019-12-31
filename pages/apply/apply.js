@@ -32,23 +32,18 @@ Page({
     }
     
     HTTP.apiAddOrder({ ...data }).then((result) => {
-      let { code, message } = result
-      if (code === 0) {
+      let { message } = result
         wx.navigateTo({
           url: '/pages/detail/detail',
         })
-        //表单重置
-        that.formReset()
-
-      } else {
-        wx.showToast({
-          title: message,
-          icon:'none',
-          duration: 2000
-        })
-      }
+      //表单重置
+      that.formReset()
     }).catch((err) => {
-      
+      wx.showToast({
+        title: message,
+        icon:'none',
+        duration: 2000
+      })
     });
   }
 },

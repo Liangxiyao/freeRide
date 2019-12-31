@@ -18,7 +18,7 @@ Page({
    */
   onShareAppMessage: function (res) {
     return {
-      title: '让我们一起回家吧',
+      title: '回家路上，一路同行',
       path: '/pages/index/index',
       success: function(res) {
         // 转发成功
