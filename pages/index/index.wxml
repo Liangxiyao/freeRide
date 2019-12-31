@@ -1,11 +1,11 @@
 <view class="page-index">
   <view class="filter">
     <picker class="input" bindchange="bindStart" value="{{startIndex}}" range="{{address}}">
-      <view class="picker">{{startIndex?address[startIndex]:"始发地"}}</view>
+      <view class="picker">{{startIndex>=0?address[startIndex]:"始发地"}}</view>
     </picker >
     <icon class="iconfont icon-to" size="14px"></icon>
     <picker class="input"  bindchange="bindEnd" value="{{endIndex}}" range="{{address}}">
-      <view class="picker">{{endIndex?address[endIndex]:'目的地'}}</view>
+      <view class="picker">{{endIndex>=0?address[endIndex]:'目的地'}}</view>
     </picker>
     <icon class="iconfont icon-date" size="14px"></icon>
     <picker class="input date" mode="date" value="{{date}}" start="{{date}}" end="2030-09-01" bindchange="bindDateChange">

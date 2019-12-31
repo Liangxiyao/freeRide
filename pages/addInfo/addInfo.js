@@ -18,12 +18,7 @@ Page({
     personIndex:4,
     person: ['1人', '2人', '3人', '4人', '5人', '6人']
   },
-  onLoad() {
-
-    // 进度条
-    // this.progress = this.selectComponent("#progress")
-    // this.progress.getPercent()
-  },
+  onLoad() {},
   dateChange(e) { 
     let checkedDate = e.detail.dateString
     let checkedTimestamp = timestamp(checkedDate)
@@ -111,8 +106,8 @@ Page({
    * 表单验证
    */
   checkedContact(value) {
-    let contact = value.contact.replace(/(^\s*)|(\s*$)/g, "")
-    if (contact === '' || contact.length < 2) {
+ 
+    if (contact === '') {
       wx.showToast({
         title: '请填写联系人',
         icon:'none',

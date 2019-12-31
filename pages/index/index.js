@@ -15,8 +15,8 @@ Page({
     hasNextPage: true,
     page: 1,
     address: app.globalData.address,
-    startIndex: '', //默认始发站
-    endIndex: '',  //默认目的地
+    startIndex: -1, //默认始发站
+    endIndex: -1,  //默认目的地
     date:formatTime(new Date(),1)
   },
   /**
@@ -32,9 +32,6 @@ Page({
   onLoad() {
     this.listRequest()  
     this.bannerFn()
-  },
-  //下拉刷新
-  onPullDownRefresh(){
   },
   //上拉加载
   onReachBottom(){
@@ -71,33 +68,39 @@ Page({
     this.setData({
       startIndex: e.detail.value,
       page: 1,
+      lists:[]
     })
-    let { startIndex, endIndex, date, address} = this.data
+    let { startIndex, endIndex, date, address } = this.data
+    console.log(startIndex)
     this.listRequest({
-      start: address[startIndex],
-      end: address[endIndex],
+      start: startIndex >= 0 ? address[startIndex] : '',
+      end: endIndex >= 0 ? address[endIndex] : '',
       date
     })
   },
   bindEnd: function (e) {
     this.setData({
-      endIndex: e.detail.value
+      endIndex: e.detail.value,
+      page: 1,
+      lists:[]
     })
     let { startIndex, endIndex, date, address} = this.data
     this.listRequest({
-      start: address[startIndex],
-      end: address[endIndex],
+      start: startIndex >= 0 ? address[startIndex] : '',
+      end: endIndex >= 0 ? address[endIndex] : '',
       date
     })
   },
   bindDateChange: function (e) {
     this.setData({
-      date: e.detail.value
+      date: e.detail.value,
+      page: 1,
+      lists:[]
     })
-    let { startIndex, endIndex, date, address} = this.data
+    let { startIndex, endIndex, date, address } = this.data
     this.listRequest({
-      start: address[startIndex],
-      end: address[endIndex],
+      start: startIndex >= 0 ? address[startIndex] : '',
+      end: endIndex >= 0 ? address[endIndex] : '',
       date
     })
   },

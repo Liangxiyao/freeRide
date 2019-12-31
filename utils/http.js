@@ -12,8 +12,8 @@ const request = (url, params, method)=>{
       url: `${API_URI}${url}`,
       data: params,
       header: {
-        'token': token ? token : ''
-        //"Content-Type": "application/x-www-form-urlencoded"
+        'token': token ? token : '',
+        "Content-Type": method?"application/x-www-form-urlencoded":"application/json"
       },
       method: method || 'GET',
       success(res) {
