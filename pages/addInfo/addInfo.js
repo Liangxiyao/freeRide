@@ -11,9 +11,9 @@ Page({
     formInput:'',
     orderType: 1,
     address: app.globalData.address,
-    startIndex: '', //默认始发站
-    endIndex: '',  //默认目的地
-    seatIndex: 0,
+    startIndex: '0', //默认始发站
+    endIndex: '1',  //默认目的地
+    seatIndex: 3,
     seat: ['1座','2座','3座','4座','5座','6座'],
     personIndex:4,
     person: ['1人', '2人', '3人', '4人', '5人', '6人']

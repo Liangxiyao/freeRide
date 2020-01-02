@@ -78,6 +78,15 @@ Page({
       date
     })
   },
+  reset:function(e){
+    this.setData({
+      startIndex:-1,
+      endIndex:-1,
+      lists:[],
+      date:formatTime(new Date(),1)
+    });
+    this.listRequest();
+  },
   bindEnd: function (e) {
     this.setData({
       endIndex: e.detail.value,
@@ -130,7 +139,7 @@ Page({
       wx.showToast({
         title: err.msg,
         icon:'none',
-        duration: 2000
+        duration: 3000
       })
     });
   }
