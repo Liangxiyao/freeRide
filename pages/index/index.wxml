@@ -21,7 +21,7 @@
 			<picker class="input date" mode="date" style="width:28%" value="{{date}}" start="{{date}}" end="2030-09-01" bindchange="bindDateChange">
 				<view class="picker">{{date}}</view>
 			</picker>
-			<button type="default" size="default" form-type="reset" bindtap="reset" hover-class="other-button-hover">
+			<button type="default" class="btn" size="default" form-type="reset" bindtap="reset" hover-class="other-button-hover">
 				<icon class="iconfont icon-cancel" size="14px"></icon>
 			</button>
 		</view>
