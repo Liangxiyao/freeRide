@@ -3,11 +3,12 @@
 .page-detail{margin:10px;}
 .car-item{font-size:13px;color:#666;line-height:30px;padding:10px;background-color: #fff;margin-bottom:8px;border-radius:5px;}
 .car-item .label{display:inline-block;width:70px;text-align: right;color:#333;}
-.orderStatus{text-align: right;}
+.orderStatus{line-height: 30px;margin-bottom: 5px;color: #000;font-size: 14px;}
+.orderStatus .status{text-align: right;}
 .address{text-align: center;font-size:16px;color:#333;clear: both;padding:10px 0;margin-bottom: 10px;}
 .address .iconfont{font-size:20px;color:#666;padding:0 10px;}
 .btn{height:40px;line-height:40px;margin-top:20px;font-size:15px;}
-/* .btn::after{border:none;} */
+.close{margin-right:10px;}
 .btn.primary{background-color:#00a43e;color:#fff;}
 .icon-phone{padding:0 10px;}
 

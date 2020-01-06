@@ -9,18 +9,20 @@
   </button>
  
   <view class="bd">
-    <view class="item wbox bdb">
-      <view class="txt wbox-flex">我的订单</view>
-      <icon class="iconfont icon-arrow"/>
-    </view>
-    <view class="item wbox bdb">
+    <navigator url="/pages/myOrder/myOrder" hover-class="none" class="bdb">
+      <view class="item wbox ">
+        <view class="txt wbox-flex">我的订单</view>
+        <icon class="iconfont icon-arrow"/>
+      </view>
+    </navigator>
+    <!-- <view class="item wbox bdb">
       <view class="txt wbox-flex">我的消息</view>
       <icon class="iconfont icon-arrow" size="12px"/>
     </view>
     <view class="item wbox bdb">
       <view class="txt wbox-flex">意见反馈</view>
       <icon class="iconfont icon-arrow" size="12px"/>
-    </view> 
+    </view>  -->
     <view class="item wbox bdb">
       <view class="txt wbox-flex">联系客服</view>
       <icon class="iconfont icon-arrow" size="12px"/>

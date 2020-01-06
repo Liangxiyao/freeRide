@@ -1,28 +1,12 @@
 
 <view class="page-detail">
-  <!-- <view class="car-item">
-    <view class="time">
-      <text class="label">出发时间：</text> {{detail.startTime}}
-    </view>
-    <view class="startPlace ">
-      <text class="label">始发地：</text>{{detail.startPlace}}
-    </view>
-    <view class="endPlace ">
-      <text class="label">目的地：</text>{{detail.destination}}
-    </view>
-    <view class="personNum">
-      <text class="label">可乘坐：</text>{{detail.seatCount}}人
-    </view>
-    <view class="tel">
-      <text class="label">联系电话：</text>{{detail.mobile}}
-    </view>
-    <view class="mark" wx:if="{{detail.mark}}">
-        <text class="label">备注信息：</text>{{detail.mark}}
-    </view>
-  </view> -->
   <view class="car-item">
-    <view class="time">
-      {{detail.startTime}}
+    <view class="orderStatus wbox">
+      <text class="wbox-flex">{{item.orderType===1?"车找人":"人找车"}}</text>
+      <view wx:if="{{item.orderStatus===1}}" class="status wbox-flex">进行中
+        <icon class="iconfont icon-arrow" size="12px" />
+      </view>
+      <view wx:else class="status wbox-flex end">已结束</view>
     </view>
     <view class="item address bdb" >
       {{detail.startPlace}}
@@ -35,6 +19,10 @@
     <view class="endPlace ">
       <text class="label">目的地：</text>{{detail.destination}}
     </view> -->
+    <view class="time">
+      <text class="label">出发时间：</text>{{detail.startTime}}
+      
+    </view>
     <view class="personNum">
       <text class="label">可乘坐：</text>{{detail.seatCount}}人
     </view>
@@ -56,7 +44,12 @@
       <view wx:if="{{detail.orderStatus===1}}" class="status wbox-flex">进行中</view>
       <view wx:else class="status wbox-flex end">已结束</view>
     </view> -->
+    <!-- <view class="btn-area wbox">
+      <button class="wbox-flex btn close" bindtap="close">关闭订单</button>
+      <button class="wbox-flex btn edit" type="primary" bindtap="edit">修改订单</button>
+    </view> -->
   </view>
+
   <!-- 模态框 -->
   <!-- <modal showModal="{{false}}" modal="{{modal}}">
     <form  class="modal-forms" slot="modal-cont">

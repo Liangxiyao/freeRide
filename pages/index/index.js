@@ -113,8 +113,8 @@ Page({
       date
     })
   },
-  listRequest(data) {
-    HTTP.apiFreeRide(data).then((res) => {
+  listRequest(params) {
+    HTTP.apiFreeRide(params).then((res) => {
       let { items, hasNextPage } = res
       let oldData = this.data.lists
       let lists = oldData.concat(items)

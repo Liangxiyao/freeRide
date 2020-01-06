@@ -81,8 +81,8 @@ const http = {
   apiFreeRide: p => request('/freeRide/list', p, 'POST'),
   apiFreeRideDeatil: p => request('/freeRide/detail', p),
   apiAddOrder: p => request('/freeRide/pub', p, 'POST'),
-  apiUpdateUser: p => request('/user/update', p)
-
+  apiUpdateUser: p => request('/user/update', p),
+  apiOrderList: p => request('/freeRide/user/list', p, 'POST')
 }
 
 

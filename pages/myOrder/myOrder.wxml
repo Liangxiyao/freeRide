@@ -1,0 +1,26 @@
+
+<view class="myorder">
+  <view class="car-lists">
+    <navigator url="/pages/detail/detail?id={{item.id}}" class="car-item" wx:for="{{lists}}" wx:key="item.id">
+      <view class="orderStatus wbox">
+        <text class="wbox-flex">{{item.orderType===1?"车找人":"人找车"}}</text>
+        <view wx:if="{{item.orderStatus===1}}" class="status wbox-flex">进行中
+          <icon class="iconfont icon-arrow" size="12px" />
+        </view>
+        <view wx:else class="status wbox-flex end">已结束
+          <icon class="iconfont icon-arrow" size="12px" />
+        </view>
+      </view>
+      <view class="item time">
+        <icon class="iconfont icon-time" size="12px" /> {{item.startTime}}
+      </view>
+      <view class="item startPlace">
+        <icon class="iconfont icon-address" size="12px" />
+        {{item.startPlace}}
+        <icon class="iconfont icon-to" size="14px" />
+        {{item.destination}}
+      </view>
+    </navigator>
+  </view>
+  <view class="loadmore">{{hasNextPage?"上拉加载更多...":"暂无更多数据~"}}</view>
+</view>

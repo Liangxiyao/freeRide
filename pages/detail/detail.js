@@ -6,10 +6,22 @@ Page({
     detail: {},
     personIndex:4,
     person: ['1人', '2人', '3人', '4人', '5人', '6人'],
+    btnShow: false
   },
   onLoad(options) {
     let orderId = options.id
     this._getDetail(orderId)
+
+    //上一页路径
+    let pages = getCurrentPages();
+    let prevpage = pages[pages.length - 2];
+    if (prevpage == "pages/myOrder/myOrder") {
+      this.setData({
+        btnShow:true
+      })
+    }
+    console.log(prevpage.route)
+
   },
   _getDetail(orderId) {
     HTTP.apiFreeRideDeatil({
@@ -40,5 +52,18 @@ Page({
         }
       })
     }
+  },
+  close() {
+    wx.showModal({
+     // title: '确定关闭订单吗',
+      content: '确定关闭当前订单吗',
+      success (res) {
+        if (res.confirm) {
+          
+        } else if (res.cancel) {
+          wx.hideToast()
+        }
+      }
+    })
   }
 })

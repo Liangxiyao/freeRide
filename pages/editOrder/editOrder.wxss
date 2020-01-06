@@ -1,0 +1,12 @@
+.forms {display:block;background-color: #fff;border-radius:5px;padding:15px;}
+.forms .item{display:flex;margin-bottom:10px;}
+.forms .label{width:75px;font-size:14px;margin-right:10px;line-height:30px;}
+.forms .input{flex:75px 1;border: 1px solid #f1f1f1;font-size:13px;padding:5px 10px;line-height:20px;}
+.radio-group{font-size:13px;line-height:25px;}
+.btn-area{display: flex;justify-content:space-between;margin-top:25px;}
+.btn-area .btn{flex:1;font-size:15px;}
+.btn-area .submit{margin-left:10px;background-color: #00a43e;}
+.radio-group radio{transform:scale(0.7);}
+.radio-group label{margin-right:10px;}
+.textarea{height:160rpx;}
+.forms .picker{color:#666;}

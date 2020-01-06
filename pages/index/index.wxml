@@ -59,7 +59,7 @@
         </view> -->
 			</navigator>
 		</view>
-		<view class="loadmore">{{hasNextPage?"加载更多...":"暂无更多数据~"}}</view>
+		<view class="loadmore">{{hasNextPage?"上拉加载更多...":"暂无更多数据~"}}</view>
 	</view>
 	<button class="addBtn" open-type="getUserInfo" bindgetuserinfo="getUserInfoHandle">发布消息</button>
 	<!-- <navigator class="addBtn" url="/pages/addInfo/addInfo">发布消息</navigator> -->
