@@ -87,11 +87,12 @@ App({
               wx.setStorageSync('token', res.res);
             }
           }).catch((err) => {
-            wx.showToast({
-              title: err,
-              icon:'none',
-              duration: 2000
-            })
+            console.log("token:" + res.res);
+            // wx.showToast({
+            //   title: err,
+            //   icon:'none',
+            //   duration: 2000
+            // });
           });
         }
       }
