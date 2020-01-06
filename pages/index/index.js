@@ -9,7 +9,7 @@ Page({
     indicatorDots: true,
     autoplay: true,
     circular: true,
-    interval: 3000,
+    interval: 5000,
     indicatorColor: '#ddd',
     lists: [],
     hasNextPage: true,

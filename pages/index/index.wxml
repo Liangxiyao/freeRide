@@ -8,7 +8,7 @@
 	</swiper>
 
 	<view class="main">
-		<view class="title">最新顺风车</view>
+		<view class="title">最新信息</view>
 		<view class="filter">
 			<picker class="input" bindchange="bindStart" value="{{startIndex}}" range="{{address}}">
 				<view class="picker">{{startIndex>=0?address[startIndex]:"始发地"}}</view>

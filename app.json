@@ -14,7 +14,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#00a43e",
-    "navigationBarTitleText": "顺风车",
+    "navigationBarTitleText": "该地哈",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true,
     "withShareTicket":true 
