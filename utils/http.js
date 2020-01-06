@@ -1,7 +1,7 @@
 //import { userLogin } from './login'
 
-const API_URI = 'https://gaidiha.com/api'
-
+// const API_URI = 'https://gaidiha.com/api'
+const API_URI = 'http://localhost:8080'
 const request = (url, params, method)=>{
   wx.showLoading({
     title: '加载中',
