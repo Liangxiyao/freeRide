@@ -33,6 +33,13 @@ Page({
     this.listRequest()  
     this.bannerFn()
   },
+  //下拉刷新
+  onPullDownRefresh() {
+    this.setData({
+      lists: []
+    })
+    this.listRequest()  
+  },
   //上拉加载
   onReachBottom(){
     let { hasNextPage, page } = this.data
@@ -62,7 +69,6 @@ Page({
         showCancel: false
       })
     }
-
   },
   bindStart: function (e) {
     this.setData({
@@ -71,13 +77,13 @@ Page({
       lists:[]
     })
     let { startIndex, endIndex, date, address } = this.data
-    console.log(startIndex)
     this.listRequest({
       start: startIndex >= 0 ? address[startIndex] : '',
       end: endIndex >= 0 ? address[endIndex] : '',
       date
     })
   },
+  //筛选重置
   reset:function(e){
     this.setData({
       startIndex:-1,
@@ -113,6 +119,7 @@ Page({
       date
     })
   },
+  //顺风车列表
   listRequest(params) {
     HTTP.apiFreeRide(params).then((res) => {
       let { items, hasNextPage } = res
@@ -130,6 +137,7 @@ Page({
       })
     });
   },
+  //banner图
   bannerFn() {
     HTTP.apiBanner().then((result) => {
       this.setData({

@@ -20,8 +20,14 @@ Page({
     let that = this
     let userInfo = wx.getStorageSync('userInfo')
     if (userInfo) {
+      if (e.currentTarget.dataset.obj === 'order') {
+        wx.navigateTo({
+          url:'../../pages/myOrder/myOrder'
+        })
+      }
       return
     }
+
     if (e.detail.userInfo) {
       that.setData({
         userInfo:e.detail.userInfo
@@ -30,6 +36,11 @@ Page({
         key:"userInfo",
         data: e.detail.userInfo
       });
+      if (e.currentTarget.dataset.obj === 'order') {
+        wx.navigateTo({
+          url:'../../pages/myOrder/myOrder'
+        })
+      }
     } else {
       wx.showModal({
         title: '提示',

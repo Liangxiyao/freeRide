@@ -19,7 +19,6 @@ Page({
     person: ['1人', '2人', '3人', '4人', '5人', '6人']
   },
   onLoad() {
-
     //上一页路径
     let pages = getCurrentPages();
     let prevpage = pages[pages.length - 2];

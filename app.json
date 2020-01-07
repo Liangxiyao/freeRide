@@ -1,12 +1,13 @@
 {
   "pages": [ 
+    "pages/myself/myself",
     "pages/index/index",
     "pages/myOrder/myOrder",
     "pages/editOrder/editOrder",
     "pages/detail/detail",
     "pages/apply/apply",
     "pages/authorize/authorize",
-    "pages/myself/myself",
+
     "pages/addInfo/addInfo"
 
   ],

@@ -1,6 +1,7 @@
+.main{padding:0 10px;margin-top:12px;}
 .forms {display:block;background-color: #fff;border-radius:5px;padding:15px;}
-.forms .item{display:flex;margin-bottom:10px;}
-.forms .label{width:75px;font-size:14px;margin-right:10px;line-height:30px;}
+.forms .item{display:flex;margin-bottom:10px;font-size:13px;line-height:30px;color:#666;}
+.forms .label{width:75px;font-size:14px;margin-right:10px;line-height:30px;color:#333;}
 .forms .input{flex:75px 1;border: 1px solid #f1f1f1;font-size:13px;padding:5px 10px;line-height:20px;}
 .radio-group{font-size:13px;line-height:25px;}
 .btn-area{display: flex;justify-content:space-between;margin-top:25px;}
@@ -10,3 +11,4 @@
 .radio-group label{margin-right:10px;}
 .textarea{height:160rpx;}
 .forms .picker{color:#666;}
+

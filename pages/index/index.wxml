@@ -8,7 +8,8 @@
 	</swiper>
 
 	<view class="main">
-		<view class="title">最新信息</view>
+    <view class="title">最新信息</view>
+    <!-- 筛选 -->
 		<view class="filter">
 			<picker class="input" bindchange="bindStart" value="{{startIndex}}" range="{{address}}">
 				<view class="picker">{{startIndex>=0?address[startIndex]:"始发地"}}</view>
@@ -24,7 +25,8 @@
 			<button type="default" class="btn" size="default" form-type="reset" bindtap="reset" hover-class="other-button-hover">
 				<icon class="iconfont icon-cancel" size="14px"></icon>
 			</button>
-		</view>
+    </view>
+    <!-- 列表 -->
 		<view class="car-lists">
 			<navigator url="/pages/detail/detail?id={{item.id}}" class="car-item" wx:for="{{lists}}" wx:key="item.id">
 				<view class="orderStatus wbox">
@@ -49,7 +51,8 @@
           <icon class="iconfont icon-dot icon-end" size="12px"/>{{item.destination}}
         </view> -->
 				<view class="item personNum">
-					<icon class="iconfont icon-person" size="12px" />{{item.seatCount}}人
+          <icon class="iconfont icon-person" size="12px" />{{item.seatCount}}人
+          <text class="price">{{item.price?item.price+'元/人':'价格面议'}}</text>
 				</view>
 				<!-- <view class="tel">
           <text class="label">联系电话：</text>{{item.mobile}}
@@ -62,6 +65,4 @@
 		<view class="loadmore">{{hasNextPage?"上拉加载更多...":"暂无更多数据~"}}</view>
 	</view>
 	<button class="addBtn" open-type="getUserInfo" bindgetuserinfo="getUserInfoHandle">发布消息</button>
-	<!-- <navigator class="addBtn" url="/pages/addInfo/addInfo">发布消息</navigator> -->
-
 </view>

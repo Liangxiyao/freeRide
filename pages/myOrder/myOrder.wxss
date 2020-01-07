@@ -1,6 +1,8 @@
+.car-lists{margin:10px;}
 .car-item{font-size:12px;color:#666;padding:10px;background-color: #fff;margin-bottom:8px;border-radius:5px;line-height:20px;}
 .orderStatus{line-height:30px;margin-bottom:5px;color:#000;font-size:14px;}
 .status{text-align: right;color:#00a43e;}
+.status.end{color:#999;}
 .car-item .iconfont{font-size:10px;color:#999;}
 .item .iconfont{padding-right:10px;}
 .item .icon-to{padding:0 5px; color:#999;font-size:14px;}

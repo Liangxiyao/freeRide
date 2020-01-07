@@ -2,18 +2,18 @@
 <view class="page-detail">
   <view class="car-item">
     <view class="orderStatus wbox">
-      <text class="wbox-flex">{{item.orderType===1?"车找人":"人找车"}}</text>
-      <view wx:if="{{item.orderStatus===1}}" class="status wbox-flex">
-        进行中<icon class="iconfont icon-arrow" size="12px" />
+      <text class="wbox-flex">{{detail.orderType==1?"车找人":"人找车"}}</text>
+      <view wx:if="{{detail.orderStatus===1}}" class="status wbox-flex">
+        进行中
       </view>
-      <view wx:elif="{{item.orderStatus===2}}" class="status wbox-flex end">
-        已完成<icon class="iconfont icon-arrow" size="12px" />
+      <view wx:elif="{{detail.orderStatus===2}}" class="status wbox-flex end">
+        已完成
       </view>
-      <view wx:elif="{{item.orderStatus===3}}" class="status wbox-flex end">
-        已过期<icon class="iconfont icon-arrow" size="12px" />
+      <view wx:elif="{{detail.orderStatus===3}}" class="status wbox-flex end">
+        已过期
       </view>
       <view wx:else class="status wbox-flex end">
-        已关闭<icon class="iconfont icon-arrow" size="12px" />
+        已关闭
       </view>
     </view>
     <view class="item address bdb" >
@@ -28,11 +28,13 @@
       <text class="label">目的地：</text>{{detail.destination}}
     </view> -->
     <view class="time">
-      <text class="label">出发时间：</text>{{detail.startTime}}
-      
+      <text class="label">出发时间：</text>{{detail.startTime}}   
     </view>
     <view class="personNum">
       <text class="label">可乘坐：</text>{{detail.seatCount}}人
+    </view>
+    <view class="price">
+      <text class="label">车费(元/人)：</text>{{detail.price?detail.price+'元/人':'价格面议'}}
     </view>
     <view class="person">
       <text class="label">联系人：</text>{{detail.contact}}
@@ -42,7 +44,7 @@
       <icon class="iconfont icon-phone" size="14px" bindtap="tel"/>  
     </view>
     <view class="mark" wx:if="{{detail.mark}}">
-        <text class="label">备注信息：</text>{{detail.mark}}
+        <text class="label">订单描述：</text>{{detail.mark}}
     </view>
     <!-- <navigator url="/pages/apply/apply?num={{detail.seatCount}}">
       <button class="btn primary" wx:if="{{detail.orderStatus===1}}">可预约</button>
@@ -52,9 +54,9 @@
       <view wx:if="{{detail.orderStatus===1}}" class="status wbox-flex">进行中</view>
       <view wx:else class="status wbox-flex end">已结束</view>
     </view> -->
-    <view class="btn-area wbox">
-      <button class="wbox-flex btn close" bindtap="close">关闭订单</button>
-      <button class="wbox-flex btn edit" type="primary" bindtap="edit">修改订单</button>
+    <view class="btn-area" wx:if="{{detail.orderStatus===1 && btnShow}}">
+      <button class=" btn close" bindtap="close">关闭订单</button>
+      <button class=" btn edit" type="primary" bindtap="edit">修改订单</button>
     </view>
   </view>
 

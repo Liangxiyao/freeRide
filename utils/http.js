@@ -1,7 +1,7 @@
 //import { userLogin } from './login'
 
-// const API_URI = 'https://gaidiha.com/api'
-const API_URI = 'http://localhost:8080'
+const API_URI = 'https://gaidiha.com/api'
+//const API_URI = 'http://localhost:8080'
 const request = (url, params, method)=>{
   wx.showLoading({
     title: '加载中',
@@ -82,7 +82,10 @@ const http = {
   apiFreeRideDeatil: p => request('/freeRide/detail', p),
   apiAddOrder: p => request('/freeRide/pub', p, 'POST'),
   apiUpdateUser: p => request('/user/update', p),
-  apiOrderList: p => request('/freeRide/user/list', p, 'POST')
+  apiOrderList: p => request('/freeRide/user/list', p, 'POST'),
+  apiCloseOrder: p => request('/freeRide/order/close', p, 'POST'),
+  apiEditOrder: p => request('/freeRide/order/edit', p, 'POST')
+  
 }
 
 

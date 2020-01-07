@@ -6,22 +6,36 @@ Page({
     detail: {},
     personIndex:4,
     person: ['1人', '2人', '3人', '4人', '5人', '6人'],
-    btnShow: false
+    btnShow: false,
+    goMyorder:false  //返回我的订单
   },
   onLoad(options) {
-    let orderId = options.id
-    this._getDetail(orderId)
+    this.setData({
+      orderId:options.id
+    })
+    this._getDetail(options.id)
 
-    //上一页路径
+    //从我的订单进去 可以编辑订单
     let pages = getCurrentPages();
     let prevpage = pages[pages.length - 2];
-    if (prevpage == "pages/myOrder/myOrder") {
+    if (prevpage.route == "pages/myOrder/myOrder") {
       this.setData({
         btnShow:true
       })
     }
-    console.log(prevpage.route)
-
+    //修改完订单，返回我的订单列表
+    if (prevpage.route == "pages/editOrder/editOrder") {
+      this.setData({
+        goMyorder:true
+      })
+    }
+  },
+  onUnload() {
+    if (this.data.goMyorder) {
+      wx.navigateTo({
+        url:'../../pages/myOrder/myOrder'
+      })
+    }
   },
   _getDetail(orderId) {
     HTTP.apiFreeRideDeatil({
@@ -54,16 +68,41 @@ Page({
     }
   },
   close() {
+    let that = this
     wx.showModal({
      // title: '确定关闭订单吗',
       content: '确定关闭当前订单吗',
       success (res) {
         if (res.confirm) {
-          
+          HTTP.apiCloseOrder({
+            id: that.data.orderId
+          }).then((result) => {
+
+            wx.navigateTo({
+              url: '../../pages/myOrder/myOrder'
+            })
+            
+          }).catch((err) => {
+            wx.showToast({
+              title: err.msg,
+              icon:'none',
+              duration: 2000
+            })
+          });
         } else if (res.cancel) {
           wx.hideToast()
         }
       }
+    })
+  },
+  edit() {
+    wx.setStorage({
+      key:"detail",
+      data: this.data.detail
+    })
+    
+    wx.navigateTo({
+      url:"../../pages/editOrder/editOrder"
     })
   }
 })

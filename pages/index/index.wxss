@@ -19,9 +19,12 @@
   padding:7px 10px;box-sizing: border-box;position: fixed;right:5px;bottom:100rpx;}
 .wd50{float: left;width:50%;}
 .end{color:#999;}
+.price{float: right;color:#FC8F4E;}
 
 .filter{display:flex;margin:20rpx 0;}
-.filter .input{margin-left:10rpx;height:30px;width:18%;line-height:30px;overflow: hidden;padding:0 5px;background-color: #fff;border-radius:5px;color:#666;font-size:12px;border: 1px solid #ddd;}
-.filter .btn{margin-left:10rpx;height:30px;padding:0 5px;margin-top: 3rpx;}
+.filter .input{margin-left:10rpx;height:30px;width:18%;line-height:30px;overflow: hidden;padding:0 5px;
+  background-color: #fff;border-radius:5px;color:#666;font-size:12px;border: 1px solid #ddd;}
 .filter .input:first-of-type{margin-left:0;}
 .filter .iconfont{color:#999;font-size: 16px;line-height:35px;padding-left:10rpx;}
+.filter .btn{flex:auto;margin-left:10rpx;height:30px;padding:0 5px;line-height:30px;}
+.filter .btn .iconfont{line-height:30px;padding:0;}

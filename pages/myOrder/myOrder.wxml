@@ -7,7 +7,13 @@
         <view wx:if="{{item.orderStatus===1}}" class="status wbox-flex">进行中
           <icon class="iconfont icon-arrow" size="12px" />
         </view>
-        <view wx:else class="status wbox-flex end">已结束
+        <view wx:elif="{{item.orderStatus===2}}" class="status wbox-flex end">已完成
+          <icon class="iconfont icon-arrow" size="12px" />
+        </view>
+        <view wx:elif="{{item.orderStatus===3}}" class="status wbox-flex end">已过期
+          <icon class="iconfont icon-arrow" size="12px" />
+        </view>
+        <view wx:elif="{{item.orderStatus===4}}" class="status wbox-flex end">已关闭
           <icon class="iconfont icon-arrow" size="12px" />
         </view>
       </view>

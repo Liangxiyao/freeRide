@@ -9,12 +9,7 @@ Page({
   onLoad: function () {
     this.orderList()
   },
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
+  
   //上拉加载
   onReachBottom(){
     let { hasNextPage, page } = this.data

@@ -5,23 +5,16 @@
   </view> -->
   <view class="main">
     <form  class="forms" bindsubmit="formSubmit" bindreset="formReset">
-      <view class="item">
-        <view class="label">始发地</view>
-        <picker class="input" bindchange="bindStart" value="{{startIndex}}" range="{{address}}">
-          <view class="picker">{{startIndex?address[startIndex]:"请选择始发地"}}</view>
-        </picker >
+      <view class="item start">
+        <text class="label">始发地：</text>{{detail.startPlace}}   
       </view>
-      <view class="item">
-        <view class="label">目的地</view>
-        <picker class="input"  bindchange="bindEnd" value="{{endIndex}}" range="{{address}}">
-          <view class="picker">{{endIndex?address[endIndex]:'请选择目的地'}}</view>
-        </picker>
+      <view class="item destination">
+        <text class="label">目的地：</text>{{detail.destination}}   
       </view>
-      <view class="item">
-        <view class="label">出发时间</view>
-        <date-picker class="input picker" value="{{initDate}}" bindchange="dateChange">{{date}}</date-picker>
+      <view class="item time">
+        <text class="label">出发时间：</text>{{detail.startTime}}   
       </view>
-      <view class="item" wx:if="{{orderType===1}}">
+      <view class="item" wx:if="{{detail.orderType===1}}">
         <view class="label">剩余座位</view>
         <picker class="input" bindchange="bindSeatNum" value="{{seatIndex}}" range="{{seat}}">
           <view class="picker">{{seat[seatIndex]}}</view>
@@ -29,23 +22,23 @@
       </view>
       <view class="item">
         <view class="label">联系人</view>
-        <input name="contact" class="input" value="{{formInput}}" placeholder="某先生/某女士"/>
+        <input name="contact" class="input" value="{{detail.contact}}" placeholder="某先生/某女士"/>
       </view>
       <view class="item">
         <view class="label">联系电话</view>
-        <input name="mobile" class="input" value="{{formInput}}" placeholder="请确保电话正确，方便联系" type="number"/>
+        <input name="mobile" class="input" value="{{detail.mobile}}" placeholder="请确保电话正确，方便联系" type="number"/>
       </view>
-      <view class="item progress">
+      <!-- <view class="item progress">
         <view class="label">车费(元/人)</view>
         <input name="price" type="digit" class="input" value="{{formInput}}" placeholder="若不填，则为面议"/>
-      </view>
+      </view> -->
       <view class="item">
-        <view class="label">备注信息</view>
-        <textarea  class="textarea input" name="mark" value="{{formInput}}" maxlength="140"/>
+        <view class="label">订单描述</view>
+        <textarea  class="textarea input" name="mark" value="{{detail.mark}}" maxlength="140"/>
       </view>
       <view class="btn-area">
-        <button formType="reset" class="btn reset">重置</button>
-        <button formType="submit" type="primary"  class="btn submit">提交</button>
+        <button  class="btn cancel" bindtap="cancel">取消</button>
+        <button formType="submit" type="primary"  class="btn submit">修改</button>
       </view>
     </form>
   </view>

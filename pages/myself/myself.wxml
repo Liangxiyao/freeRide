@@ -9,12 +9,13 @@
   </button>
  
   <view class="bd">
-    <navigator url="/pages/myOrder/myOrder" hover-class="none" class="bdb">
-      <view class="item wbox ">
+    <button class="button-item" open-type="getUserInfo" data-obj="order"  bindgetuserinfo="getUserInfoHandle">
+      <view class="item wbox bdb">
         <view class="txt wbox-flex">我的订单</view>
-        <icon class="iconfont icon-arrow"/>
+        <icon class="iconfont icon-arrow" size="12px"/>
       </view>
-    </navigator>
+    </button>
+    
     <!-- <view class="item wbox bdb">
       <view class="txt wbox-flex">我的消息</view>
       <icon class="iconfont icon-arrow" size="12px"/>
@@ -23,13 +24,19 @@
       <view class="txt wbox-flex">意见反馈</view>
       <icon class="iconfont icon-arrow" size="12px"/>
     </view>  -->
-    <view class="item wbox bdb">
-      <view class="txt wbox-flex">联系客服</view>
-      <icon class="iconfont icon-arrow" size="12px"/>
-    </view>
     <!-- <view class="item wbox bdb">
       <view class="txt wbox-flex">退出登录</view>
       <icon class="iconfont icon-arrow" size="12px"/>
     </view> -->
+    <button class="button-item" open-type='feedback'>
+      <view class="item wbox bdb">
+        <view class="txt wbox-flex">意见反馈</view>
+        <icon class="iconfont icon-arrow" size="12px"/>
+      </view>
+    </button>
+    <view class="item wbox bdb">
+      <view class="txt wbox-flex">打赏一下</view>
+      <icon class="iconfont icon-arrow" size="12px"/>
+    </view>
   </view>
 </view>
