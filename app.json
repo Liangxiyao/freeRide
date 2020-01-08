@@ -1,7 +1,7 @@
 {
   "pages": [ 
-    "pages/myself/myself",
     "pages/index/index",
+    "pages/myself/myself",
     "pages/myOrder/myOrder",
     "pages/editOrder/editOrder",
     "pages/detail/detail",
@@ -13,7 +13,7 @@
     "backgroundColor":"#f1f1f1",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#00a43e",
-    "navigationBarTitleText": "该地哈",
+    "navigationBarTitleText": "街底下",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true,
     "withShareTicket":true 
