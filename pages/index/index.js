@@ -38,19 +38,18 @@ Page({
     this.setData({
       lists: []
     })
-    this.listRequest()  
+    this.resultList(this.data)
     wx.stopPullDownRefresh();
   },
   //上拉加载
   onReachBottom(){
     let { hasNextPage, page } = this.data
-    this.setData({
-      page:page+1
-    })
+    
     if (hasNextPage) {
-      this.listRequest({
-        index:this.data.page
+      this.setData({
+        page:page+1
       })
+      this.resultList(this.data)
     }
   },
   //发布信息入口、获取用户信息授权 
@@ -77,12 +76,7 @@ Page({
       page: 1,
       lists:[]
     })
-    let { startIndex, endIndex, date, address } = this.data
-    this.listRequest({
-      start: startIndex >= 0 ? address[startIndex] : '',
-      end: endIndex >= 0 ? address[endIndex] : '',
-      date
-    })
+    this.resultList(this.data)
   },
   //筛选重置
   reset:function(e){
@@ -92,7 +86,7 @@ Page({
       lists:[],
       date:formatTime(new Date(),1)
     });
-    this.listRequest();
+    this.resultList(this.data)
   },
   bindEnd: function (e) {
     this.setData({
@@ -100,12 +94,7 @@ Page({
       page: 1,
       lists:[]
     })
-    let { startIndex, endIndex, date, address} = this.data
-    this.listRequest({
-      start: startIndex >= 0 ? address[startIndex] : '',
-      end: endIndex >= 0 ? address[endIndex] : '',
-      date
-    })
+    this.resultList(this.data)
   },
   bindDateChange: function (e) {
     this.setData({
@@ -113,8 +102,13 @@ Page({
       page: 1,
       lists:[]
     })
-    let { startIndex, endIndex, date, address } = this.data
+    this.resultList(this.data)
+  },
+  //列表请求参数处理
+  resultList(data) {
+    let { startIndex, endIndex, date, address, page } = data
     this.listRequest({
+      index:page,
       start: startIndex >= 0 ? address[startIndex] : '',
       end: endIndex >= 0 ? address[endIndex] : '',
       date
