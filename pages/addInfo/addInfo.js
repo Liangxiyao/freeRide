@@ -65,6 +65,7 @@ Page({
         end:address[endIndex],
         time:timestamp(date),
         seatCount,
+        price:inputVal.price*100
       }
       //禁止按钮多次点击
       this.setData({
