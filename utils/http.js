@@ -36,7 +36,6 @@ const request = (url, params, method)=>{
                         key:"token",
                         data: res.res
                       })
-                      request(url, params, method)
                     }
                   }).catch((err) => {
                     wx.showToast({
