@@ -68,6 +68,7 @@ Page({
         end:address[endIndex],
         time:timestamp(date),
         seatCount,
+        price:inputVal.price*100
       }
       
       HTTP.apiAddOrder({
