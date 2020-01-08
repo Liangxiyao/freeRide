@@ -8,11 +8,13 @@ const request = (url, params, method)=>{
   })
   return new Promise((resolve, reject) => {
     let token = wx.getStorageSync('token') 
+    console.log(token)
     wx.request({
       url: `${API_URI}${url}`,
       data: params,
       header: {
         'token': token ? token : '',
+       // "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzM4ODUyNjAsInVzZXJJZCI6IjEiLCJpYXQiOjE1NzM4ODQ5NjB9.RhLaM5nmXBF9J8AF7sLMj7ZUT0F-kO3_AS9tKv3nxyk",
         "Content-Type": method?"application/x-www-form-urlencoded":"application/json"
       },
       method: method || 'GET',
@@ -32,10 +34,9 @@ const request = (url, params, method)=>{
                     code:res.code
                   }).then((res) => { 
                     if (res.code === 0) {
-                      wx.setStorage({
-                        key:"token",
-                        data: res.res
-                      })
+                      console.log(wx.getStorageSync('token') )
+                      wx.setStorageSync('token', res.res)
+                      console.log(wx.getStorageSync('token') )
                     }
                   }).catch((err) => {
                     wx.showToast({

@@ -83,11 +83,9 @@ App({
             code:res.code
           }).then((res) => { 
             if (res.code === 0) {
-              console.log("token:" + res.res);
-              wx.setStorageSync('token', res.res);
+              wx.setStorageSync('token', res.res)
             }
           }).catch((err) => {
-            console.log("token:" + res.res);
             // wx.showToast({
             //   title: err,
             //   icon:'none',

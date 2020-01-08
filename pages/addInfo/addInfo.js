@@ -17,7 +17,6 @@ Page({
     seat: ['1座','2座','3座','4座','5座','6座'],
     personIndex:4,
     person: ['1人', '2人', '3人', '4人', '5人', '6人'],
-    disabled:false  //按钮是否禁止
   },
   dateChange(e) { 
     let checkedDate = e.detail.dateString
@@ -67,11 +66,6 @@ Page({
         seatCount
       }
 
-      //禁止按钮多次点击
-      this.setData({
-        disabled:true
-      })
-
       HTTP.apiAddOrder({
         ...data
       }).then((result) => {
@@ -80,15 +74,11 @@ Page({
           })
         //表单重置
         that.formReset()
-        
       }).catch((err) => {
         wx.showToast({
           title: err.msg,
           icon:'none',
           duration: 2000
-        })
-        this.setData({
-          disabled:false
         })
       });
     }

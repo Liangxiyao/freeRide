@@ -51,7 +51,7 @@
       </view>
       <view class="btn-area">
         <button formType="reset" class="btn reset">重置</button>
-        <button formType="submit" type="primary"  class="btn submit" disabled="{{disabled}}">提交</button>
+        <button formType="submit" type="primary"  class="btn submit">提交</button>
       </view>
     </form>
   </view>
