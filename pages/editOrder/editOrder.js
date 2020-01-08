@@ -4,7 +4,7 @@ Page({
   data: {
     detail: {},
     seatIndex:0,
-    seat: ['1人', '2人', '3人', '4人', '5人', '6人'],
+    seat: ['1座', '2座', '3座', '4座', '5座', '6座'],
     
   },
   onLoad: function () {

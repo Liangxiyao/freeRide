@@ -43,15 +43,15 @@
       </view>
       <view class="item progress">
         <view class="label">车费(元/人)</view>
-        <input name="price" type="digit" class="input" value="{{formInput}}" placeholder="若不填，则为面议"/>
+        <input name="price" type="number" class="input" value="{{formInput}}" placeholder="若不填，则为面议"/>
       </view>
       <view class="item">
-        <view class="label">备注信息</view>
+        <view class="label">订单备注</view>
         <textarea  class="textarea input" name="mark" value="{{formInput}}" maxlength="140"/>
       </view>
       <view class="btn-area">
         <button formType="reset" class="btn reset">重置</button>
-        <button formType="submit" type="primary"  class="btn submit">提交</button>
+        <button formType="submit" type="primary"  class="btn submit" disabled="{{disabled}}">提交</button>
       </view>
     </form>
   </view>

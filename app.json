@@ -1,19 +1,20 @@
 {
   "pages": [ 
-    "pages/myself/myself",
     "pages/index/index",
+    "pages/addInfo/addInfo",
+    "pages/myself/myself",
     "pages/myOrder/myOrder",
     "pages/editOrder/editOrder",
     "pages/detail/detail",
     "pages/apply/apply",
-    "pages/authorize/authorize",
-    "pages/addInfo/addInfo"
+    "pages/authorize/authorize"
+
   ],
   "window": {
     "backgroundColor":"#f1f1f1",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#00a43e",
-    "navigationBarTitleText": "该地哈",
+    "navigationBarTitleText": "街地下",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true,
     "withShareTicket":true 

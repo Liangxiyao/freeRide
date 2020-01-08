@@ -31,10 +31,10 @@
       <text class="label">出发时间：</text>{{detail.startTime}}   
     </view>
     <view class="personNum">
-      <text class="label">可乘坐：</text>{{detail.seatCount}}人
+      <text class="label">剩余座位：</text>{{detail.seatCount}}座
     </view>
     <view class="price">
-      <text class="label">车费(元/人)：</text>{{detail.price?detail.price+'元/人':'价格面议'}}
+      <text class="label">车费(元/人)：</text>{{detail.price >=0 ? detail.price+'元/人':'价格面议'}}
     </view>
     <view class="person">
       <text class="label">联系人：</text>{{detail.contact}}
@@ -44,7 +44,7 @@
       <icon class="iconfont icon-phone" size="14px" bindtap="tel"/>  
     </view>
     <view class="mark" wx:if="{{detail.mark}}">
-        <text class="label">订单描述：</text>{{detail.mark}}
+        <text class="label">订单备注：</text>{{detail.mark}}
     </view>
     <!-- <navigator url="/pages/apply/apply?num={{detail.seatCount}}">
       <button class="btn primary" wx:if="{{detail.orderStatus===1}}">可预约</button>

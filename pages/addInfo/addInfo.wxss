@@ -15,5 +15,5 @@
 .btn-area .submit{margin-left:10px;background-color: #00a43e;}
 .radio-group radio{transform:scale(0.7);}
 .radio-group label{margin-right:10px;}
-.textarea{height:160rpx;}
+.textarea{height:200rpx;}
 .forms .picker{color:#666;}

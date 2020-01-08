@@ -16,13 +16,8 @@ Page({
     seatIndex: 3,
     seat: ['1座','2座','3座','4座','5座','6座'],
     personIndex:4,
-    person: ['1人', '2人', '3人', '4人', '5人', '6人']
-  },
-  onLoad() {
-    //上一页路径
-    let pages = getCurrentPages();
-    let prevpage = pages[pages.length - 2];
-    console.log(prevpage.route)
+    person: ['1人', '2人', '3人', '4人', '5人', '6人'],
+    disabled:false  //按钮是否禁止
   },
   dateChange(e) { 
     let checkedDate = e.detail.dateString
@@ -51,7 +46,6 @@ Page({
    * 提交表单
   **/
   formSubmit: function (e) { 
-
     let that = this
     let inputVal = e.detail.value
     let checkedResult = that.checkedAddress() && that.checkedTime() && that.checkedContact(inputVal) && that.checkedPhone(inputVal) 
@@ -59,9 +53,12 @@ Page({
       let { orderType, date, startIndex, endIndex, seatIndex, seat, person, personIndex, address} = that.data
       let seatCount = orderType === 1 ? parseInt(seat[seatIndex]) : parseInt(person[personIndex]) //剩余座位或同行人
       let addressType = address[startIndex] == address[endIndex] ? 1 : 2  //订单类型
-      console.log(inputVal)
+      let price = inputVal.price.replace(/(^\s*)|(\s*$)/g, "")  
+      price === '' ? -1 : parseInt(inputVal.price)
+      
       let data = {
         ...inputVal,
+        price,
         orderType,
         addressType,
         start:address[startIndex],
@@ -69,7 +66,11 @@ Page({
         time:timestamp(date),
         seatCount,
       }
-      
+      //禁止按钮多次点击
+      this.setData({
+        disabled:true
+      })
+
       HTTP.apiAddOrder({
         ...data
       }).then((result) => {
@@ -84,6 +85,9 @@ Page({
           title: err.msg,
           icon:'none',
           duration: 2000
+        })
+        this.setData({
+          disabled:false
         })
       });
     }
