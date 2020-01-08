@@ -53,14 +53,15 @@ Page({
   formSubmit: function (e) { 
 
     let that = this
-    let checkedResult = that.checkedAddress() && that.checkedTime() && that.checkedContact(e.detail.value) && that.checkedPhone(e.detail.value) 
+    let inputVal = e.detail.value
+    let checkedResult = that.checkedAddress() && that.checkedTime() && that.checkedContact(inputVal) && that.checkedPhone(inputVal) 
     if (checkedResult) {
       let { orderType, date, startIndex, endIndex, seatIndex, seat, person, personIndex, address} = that.data
       let seatCount = orderType === 1 ? parseInt(seat[seatIndex]) : parseInt(person[personIndex]) //剩余座位或同行人
       let addressType = address[startIndex] == address[endIndex] ? 1 : 2  //订单类型
-      
+      console.log(inputVal)
       let data = {
-        ...e.detail.value,
+        ...inputVal,
         orderType,
         addressType,
         start:address[startIndex],
@@ -72,7 +73,7 @@ Page({
       HTTP.apiAddOrder({
         ...data
       }).then((result) => {
-          wx.navigateTo({
+          wx.redirectTo({
             url: `/pages/detail/detail?id=${result.res}`,
           })
         //表单重置

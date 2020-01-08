@@ -9,7 +9,14 @@ Page({
   onLoad: function () {
     this.orderList()
   },
-  
+  //下拉刷新
+  onPullDownRefresh() {
+    this.setData({
+      lists: []
+    })
+    this.orderList() 
+    wx.stopPullDownRefresh()
+  },
   //上拉加载
   onReachBottom(){
     let { hasNextPage, page } = this.data

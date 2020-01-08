@@ -7,11 +7,10 @@
     "pages/detail/detail",
     "pages/apply/apply",
     "pages/authorize/authorize",
-
     "pages/addInfo/addInfo"
-
   ],
   "window": {
+    "backgroundColor":"#f1f1f1",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#00a43e",
     "navigationBarTitleText": "该地哈",

@@ -26,8 +26,7 @@ Page({
         })
       }
       return
-    }
-
+    } 
     if (e.detail.userInfo) {
       that.setData({
         userInfo:e.detail.userInfo
@@ -48,5 +47,22 @@ Page({
         showCancel: false
       })
     }   
+  },
+  contactMe() {
+    wx.showModal({
+      title: '提示',
+      content: '上班时间：9:00 至 18:00，是否复制微信号？',
+      confirmText: '复制',
+      success() {
+        wx.setClipboardData({
+          data: 'ailefei',
+          success: function (res) {
+            wx.showToast({
+              title: '复制成功'
+            });
+          }
+        })
+      }
+    })
   }
 })

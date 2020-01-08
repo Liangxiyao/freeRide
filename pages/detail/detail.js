@@ -7,7 +7,6 @@ Page({
     personIndex:4,
     person: ['1人', '2人', '3人', '4人', '5人', '6人'],
     btnShow: false,
-    goMyorder:false  //返回我的订单
   },
   onLoad(options) {
     this.setData({
@@ -21,19 +20,6 @@ Page({
     if (prevpage.route == "pages/myOrder/myOrder") {
       this.setData({
         btnShow:true
-      })
-    }
-    //修改完订单，返回我的订单列表
-    if (prevpage.route == "pages/editOrder/editOrder") {
-      this.setData({
-        goMyorder:true
-      })
-    }
-  },
-  onUnload() {
-    if (this.data.goMyorder) {
-      wx.navigateTo({
-        url:'../../pages/myOrder/myOrder'
       })
     }
   },
@@ -57,7 +43,7 @@ Page({
     if (this.data.detail) {
       let { mobile } = this.data.detail
       wx.makePhoneCall({
-        phoneNumber: mobile, //这个是我的手机号，模拟测试
+        phoneNumber: mobile,
         success: function () {
           console.log("拨打电话成功！")
         },
@@ -101,7 +87,7 @@ Page({
       data: this.data.detail
     })
     
-    wx.navigateTo({
+    wx.redirectTo({
       url:"../../pages/editOrder/editOrder"
     })
   }

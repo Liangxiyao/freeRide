@@ -39,6 +39,7 @@ Page({
       lists: []
     })
     this.listRequest()  
+    wx.stopPullDownRefresh();
   },
   //上拉加载
   onReachBottom(){

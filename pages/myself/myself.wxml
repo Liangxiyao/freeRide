@@ -11,31 +11,24 @@
   <view class="bd">
     <button class="button-item" open-type="getUserInfo" data-obj="order"  bindgetuserinfo="getUserInfoHandle">
       <view class="item wbox bdb">
-        <view class="txt wbox-flex">我的订单</view>
+        <view class="txt wbox-flex l-item">
+          <icon class="iconfont icon-order" size="14px"/>我发布的
+        </view>
         <icon class="iconfont icon-arrow" size="12px"/>
       </view>
     </button>
-    
-    <!-- <view class="item wbox bdb">
-      <view class="txt wbox-flex">我的消息</view>
-      <icon class="iconfont icon-arrow" size="12px"/>
-    </view>
-    <view class="item wbox bdb">
-      <view class="txt wbox-flex">意见反馈</view>
-      <icon class="iconfont icon-arrow" size="12px"/>
-    </view>  -->
-    <!-- <view class="item wbox bdb">
-      <view class="txt wbox-flex">退出登录</view>
-      <icon class="iconfont icon-arrow" size="12px"/>
-    </view> -->
     <button class="button-item" open-type='feedback'>
       <view class="item wbox bdb">
-        <view class="txt wbox-flex">意见反馈</view>
+        <view class="txt wbox-flex l-item">
+          <icon class="iconfont icon-suggest" size="14px"/>意见反馈
+        </view>
         <icon class="iconfont icon-arrow" size="12px"/>
       </view>
     </button>
-    <view class="item wbox bdb">
-      <view class="txt wbox-flex">打赏一下</view>
+    <view class="item wbox" bindtap="contactMe">  
+      <view class="txt wbox-flex l-item">
+        <icon class="iconfont icon-contact" size="14px"/>联系我们
+      </view>
       <icon class="iconfont icon-arrow" size="12px"/>
     </view>
   </view>

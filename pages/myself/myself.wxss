@@ -6,6 +6,7 @@
 .hd .user-score{margin-top:15px;font-size:12px;color:#999;}
 .bd{margin:10px;background-color: #fff;border-radius:5px;padding:0 10px;}
 .bd .item{padding:15px 10px;line-height:25px;align-items: center;justify-content: center;font-size:14px;}
-/* .bd .item:last-of-type::after{display:none;} */
-.bd .item .iconfont{color:#666;font-size:10px;}
+.item .iconfont{color:#666;font-size:10px;}
 .button-item{padding:0;background-color: #fff;line-height:14px;align-items: center;justify-content: center;border-radius:0;text-align: left;}
+.phone{font-size:12px;color:#999;}
+.l-item .iconfont{font-size:16px;margin-left:-5px;margin-right:8px;color:#666;}

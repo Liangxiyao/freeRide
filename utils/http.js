@@ -12,7 +12,8 @@ const request = (url, params, method)=>{
       url: `${API_URI}${url}`,
       data: params,
       header: {
-        'token': token ? token : '',
+        //'token': token ? token : '',
+        'token':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1Nzg1MzY5NTIsInVzZXJJZCI6IjE2IiwiaWF0IjoxNTc4NDUwNTUyfQ.78YGBAxmF9Ijsm15IL_ZQdt48My64Snhd48T62I2MME',
         "Content-Type": method?"application/x-www-form-urlencoded":"application/json"
       },
       method: method || 'GET',
@@ -36,6 +37,7 @@ const request = (url, params, method)=>{
                         key:"token",
                         data: res.res
                       })
+                      request(url, params, method)
                     }
                   }).catch((err) => {
                     wx.showToast({

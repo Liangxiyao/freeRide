@@ -80,7 +80,7 @@ Page({
           icon: 'success',
           duration: 2000
         })
-        wx.navigateTo({
+        wx.redirectTo({
           url: `/pages/detail/detail?id=${detail.id}`,
         })
         
