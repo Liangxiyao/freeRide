@@ -180,11 +180,6 @@ Page({
       date: e.detail.value
     })
   },
-  // bindTimeChange: function (e) {
-  //   this.setData({
-  //     time: e.detail.value
-  //   })
-  // },
   bindStart: function (e) {
     this.setData({
       startIndex: e.detail.value

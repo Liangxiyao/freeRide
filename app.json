@@ -16,8 +16,7 @@
     "navigationBarBackgroundColor": "#00a43e",
     "navigationBarTitleText": "街地下",
     "navigationBarTextStyle": "white",
-    "enablePullDownRefresh": true,
-    "withShareTicket":true 
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#333",

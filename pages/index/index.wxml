@@ -19,7 +19,7 @@
 				<view class="picker">{{endIndex>=0?address[endIndex]:'目的地'}}</view>
 			</picker>
 			<icon class="iconfont icon-date" size="14px"></icon>
-			<picker class="input date" mode="date" style="width:28%" value="{{date}}" start="{{date}}" end="2030-09-01" bindchange="bindDateChange">
+			<picker class="input date" mode="date" style="width:28%" value="{{date}}" start="{{startDate}}" end="2030-09-01" bindchange="bindDateChange">
 				<view class="picker">{{date}}</view>
 			</picker>
 			<button type="default" class="btn" size="default" form-type="reset" bindtap="reset" hover-class="other-button-hover">
@@ -28,7 +28,7 @@
     </view>
     <!-- 列表 -->
 		<view class="car-lists">
-			<navigator url="/pages/detail/detail?id={{item.id}}" class="car-item" wx:for="{{lists}}" wx:key="item.id">
+			<navigator url="/pages/detail/detail?id={{item.id}}" class="car-item" wx:for="{{lists}}" wx:key="id">
 				<view class="orderStatus wbox">
 					<text class="wbox-flex">{{item.orderType===1?"车找人":"人找车"}}</text>
 					<view wx:if="{{item.orderStatus===1}}" class="status wbox-flex">进行中
@@ -52,7 +52,7 @@
         </view> -->
 				<view class="item personNum">
           <icon class="iconfont icon-person" size="12px" />{{item.seatCount}}人
-          <text class="price">{{item.price?item.price/100+'元/人':'价格面议'}}</text>
+          <text class="price">{{item.price ? item.price +'元/人':'价格面议'}}</text>
 				</view>
 				<!-- <view class="tel">
           <text class="label">联系电话：</text>{{item.mobile}}

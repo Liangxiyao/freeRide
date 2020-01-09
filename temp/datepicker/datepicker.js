@@ -124,7 +124,6 @@ Component({
       })
     },
     handleColumnChange(e) {
-      console.log(e)
       if (e.detail.column > 1) return false;
       let year = this.data.pickerYear;
       let month = this.data.pickerMonth;
@@ -136,8 +135,6 @@ Component({
       this._settMonthDays(year, month);
     },
     handleValueChange(e) {
-      console.log(e.detail.value)
-      console.log(this.data.rangeValues)
       let dateArr = [];
       for (let i in e.detail.value) {
         let v = this.data.rangeValues[i][e.detail.value[i]];

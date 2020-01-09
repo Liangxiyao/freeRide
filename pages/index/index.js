@@ -17,16 +17,17 @@ Page({
     address: app.globalData.address,
     startIndex: -1, //默认始发站
     endIndex: -1,  //默认目的地
-    date:formatTime(new Date(),1)
+    date:'出发时间',
+    startDate:formatTime(new Date(),1)
   },
   /**
-   * 右上角点击转发
+   * 右上角转发
    */
   onShareAppMessage: function (res) {
     return {
       title: "与您同行",
       path: "/pages/index/index",
-      imageUrl:""
+      imageUrl:"https://s2.ax1x.com/2020/01/07/lcPHn1.md.jpg"
     }
   },
   onLoad() {
@@ -70,6 +71,7 @@ Page({
       })
     }
   },
+  //始发站
   bindStart: function (e) {
     this.setData({
       startIndex: e.detail.value,
@@ -78,16 +80,7 @@ Page({
     })
     this.resultList(this.data)
   },
-  //筛选重置
-  reset:function(e){
-    this.setData({
-      startIndex:-1,
-      endIndex:-1,
-      lists:[],
-      date:formatTime(new Date(),1)
-    });
-    this.resultList(this.data)
-  },
+  //目的地
   bindEnd: function (e) {
     this.setData({
       endIndex: e.detail.value,
@@ -104,14 +97,26 @@ Page({
     })
     this.resultList(this.data)
   },
+  //筛选重置
+  reset:function(e){
+    this.setData({
+      page:1,
+      startIndex:-1,
+      endIndex:-1,
+      lists:[],
+      date:'出发时间'
+    });
+    this.resultList(this.data)
+  },
   //列表请求参数处理
   resultList(data) {
     let { startIndex, endIndex, date, address, page } = data
+
     this.listRequest({
       index:page,
       start: startIndex >= 0 ? address[startIndex] : '',
       end: endIndex >= 0 ? address[endIndex] : '',
-      date
+      date:date==='出发时间'?'':date
     })
   },
   //顺风车列表

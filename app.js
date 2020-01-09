@@ -82,15 +82,9 @@ App({
           HTTP.apiLogin({
             code:res.code
           }).then((res) => { 
-            if (res.code === 0) {
-              wx.setStorageSync('token', res.res)
-            }
+            wx.setStorageSync('token', res.res)
           }).catch((err) => {
-            // wx.showToast({
-            //   title: err,
-            //   icon:'none',
-            //   duration: 2000
-            // });
+            console.log(err)
           });
         }
       }

@@ -1,20 +1,18 @@
-//import { userLogin } from './login'
 
 const API_URI = 'https://gaidiha.com/api'
-//const API_URI = 'http://localhost:8080'
+
 const request = (url, params, method)=>{
   wx.showLoading({
     title: '加载中',
   })
   return new Promise((resolve, reject) => {
     let token = wx.getStorageSync('token') 
-    console.log(token)
+
     wx.request({
       url: `${API_URI}${url}`,
       data: params,
       header: {
         'token': token ? token : '',
-       // "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NzM4ODUyNjAsInVzZXJJZCI6IjEiLCJpYXQiOjE1NzM4ODQ5NjB9.RhLaM5nmXBF9J8AF7sLMj7ZUT0F-kO3_AS9tKv3nxyk",
         "Content-Type": method?"application/x-www-form-urlencoded":"application/json"
       },
       method: method || 'GET',
@@ -25,7 +23,7 @@ const request = (url, params, method)=>{
         if (isSuccess) { 
           let { code, message } = res.data
           if (code === 0) { 
-            resolve(res.data);
+            resolve(res.data)
           } else if (code === 600010) {//token过期
             wx.login({
               success (res) {
@@ -34,9 +32,7 @@ const request = (url, params, method)=>{
                     code:res.code
                   }).then((res) => { 
                     if (res.code === 0) {
-                      console.log(wx.getStorageSync('token') )
                       wx.setStorageSync('token', res.res)
-                      console.log(wx.getStorageSync('token') )
                     }
                   }).catch((err) => {
                     wx.showToast({
@@ -49,11 +45,7 @@ const request = (url, params, method)=>{
               }
             })
           } else {
-            wx.showToast({
-              title: message,
-              icon:'none',
-              duration: 2000
-            })
+            console.log(message)
           }      
         } else {
           reject({
@@ -86,7 +78,6 @@ const http = {
   apiOrderList: p => request('/freeRide/user/list', p, 'POST'),
   apiCloseOrder: p => request('/freeRide/order/close', p, 'POST'),
   apiEditOrder: p => request('/freeRide/order/edit', p, 'POST')
-  
 }
 
 

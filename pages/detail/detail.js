@@ -23,6 +23,14 @@ Page({
       })
     }
   },
+  onShareAppMessage() {
+    let { startPlace, destination } = this.data.detail
+
+    return {
+      title: `${startPlace}到${destination}的顺风车，一起呀`,
+      path: "/pages/detail/detail"
+    }
+  },
   _getDetail(orderId) {
     HTTP.apiFreeRideDeatil({
       id:orderId

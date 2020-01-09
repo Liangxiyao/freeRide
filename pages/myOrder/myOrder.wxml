@@ -1,7 +1,7 @@
 
 <view class="myorder">
   <view class="car-lists">
-    <navigator url="/pages/detail/detail?id={{item.id}}" class="car-item" wx:for="{{lists}}" wx:key="item.id">
+    <navigator url="/pages/detail/detail?id={{item.id}}" class="car-item" wx:for="{{lists}}" wx:key="id">
       <view class="orderStatus wbox">
         <text class="wbox-flex">{{item.orderType===1?"车找人":"人找车"}}</text>
         <view wx:if="{{item.orderStatus===1}}" class="status wbox-flex">进行中
