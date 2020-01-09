@@ -14,7 +14,7 @@
     "backgroundColor":"#f1f1f1",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#00a43e",
-    "navigationBarTitleText": "街地下",
+    "navigationBarTitleText": "街底下",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": true
   },
