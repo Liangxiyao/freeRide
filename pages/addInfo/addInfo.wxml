@@ -35,11 +35,11 @@
       </view>
       <view class="item">
         <view class="label">联系人</view>
-        <input name="contact" class="input" value="{{formInput}}" placeholder="某先生/某女士"/>
+        <input name="contact" type="text" class="input" value="{{formInput}}" placeholder="某先生/某女士"/>
       </view>
       <view class="item">
         <view class="label">联系电话</view>
-        <input name="mobile" class="input" value="{{formInput}}" placeholder="请确保电话正确，方便联系" type="number"/>
+        <input name="mobile" type="number"  class="input" value="{{formInput}}" placeholder="请确保电话正确，方便联系"/>
       </view>
       <view class="item progress">
         <view class="label">车费(元/人)</view>

@@ -89,36 +89,9 @@ App({
         }
       }
     })
-  },
-  /**
-   *获取用户设置
-   */
-  getSetting() {
-    wx.getSetting({
-      success(res) {  
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-          wx.getUserInfo({
-            success: function (res) {
-              that.setData({
-               userInfo:res.userInfo
-              }) 
-              wx.setStorage({
-                key: 'userInfo',
-                data: res.userInfo
-              })
-            }
-          })
-        } else {
-          wx.navigateTo({
-            url: '/pages/authorize/authorize'
-          })
-        } 
-      },
-      fail(err){
-        console.log('fail'+err)
-      }
-    })
   }
-    
+  // //存储用户信息
+  // updateUserInfo(data) {
+  //   HTTP.apiUpdateUser(data)
+  // }
 })

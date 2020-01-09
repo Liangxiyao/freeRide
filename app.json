@@ -8,7 +8,6 @@
     "pages/detail/detail",
     "pages/apply/apply",
     "pages/authorize/authorize"
-
   ],
   "window": {
     "backgroundColor":"#f1f1f1",

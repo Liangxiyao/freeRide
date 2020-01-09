@@ -52,8 +52,7 @@ Page({
       let { orderType, date, startIndex, endIndex, seatIndex, seat, person, personIndex, address} = that.data
       let seatCount = orderType === 1 ? parseInt(seat[seatIndex]) : parseInt(person[personIndex]) //剩余座位或同行人
       let addressType = address[startIndex] == address[endIndex] ? 1 : 2  //订单类型
-      let price = inputVal.price.replace(/(^\s*)|(\s*$)/g, "")
-      price === '' ? -1 : parseInt(inputVal.price)
+      let price =  inputVal.price === '' ? -1 : parseInt(inputVal.price * 100)  //处理价格
 
       let data = {
         ...inputVal,

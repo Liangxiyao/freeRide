@@ -34,7 +34,7 @@
       <text class="label">剩余座位：</text>{{detail.seatCount}}座
     </view>
     <view class="price">
-      <text class="label">车费(元/人)：</text>{{detail.price ? detail.price+'元/人':'价格面议'}}
+      <text class="label">车费(元/人)：</text>{{detail.price ? detail.price/100 +'元/人':'价格面议'}}
     </view>
     <view class="person">
       <text class="label">联系人：</text>{{detail.contact}}

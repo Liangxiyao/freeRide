@@ -28,18 +28,30 @@ Page({
       return
     } 
     if (e.detail.userInfo) {
+      let { nickName, gender, avatarUrl } = e.detail.userInfo
       that.setData({
-        userInfo:e.detail.userInfo
+        userInfo: {
+          nickName,
+          avatarUrl
+        }
       })
       wx.setStorage({
         key:"userInfo",
-        data: e.detail.userInfo
-      });
+        data: {
+          nickName,
+          gender,
+          avatarUrl
+        }
+      })
       if (e.currentTarget.dataset.obj === 'order') {
         wx.navigateTo({
           url:'../../pages/myOrder/myOrder'
         })
       }
+
+      //存后台
+      HTTP.apiUpdateUser({ nickName, gender, avatarUrl })
+      
     } else {
       wx.showModal({
         title: '提示',

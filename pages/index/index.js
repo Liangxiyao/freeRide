@@ -56,13 +56,21 @@ Page({
   //发布信息入口、获取用户信息授权 
   getUserInfoHandle(e) {
     if (e.detail.userInfo) {
+      let { nickName, gender, avatarUrl } = e.detail.userInfo
       wx.setStorage({
         key:"userInfo",
-        data: e.detail.userInfo
-      });
+        data: {
+          nickName,
+          gender,
+          avatarUrl
+        }
+      })
       wx.navigateTo({
         url: '/pages/addInfo/addInfo',
       })
+      //存后台
+      HTTP.apiUpdateUser({ nickName, gender, avatarUrl })
+      
     } else {
       wx.showModal({
         title: '提示',
