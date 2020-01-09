@@ -68,9 +68,11 @@ Page({
       wx.navigateTo({
         url: '/pages/addInfo/addInfo',
       })
-      //存后台
-      HTTP.apiUpdateUser({ nickName, gender, avatarUrl })
-      
+      if (!app.globalData.author) {
+        HTTP.apiUpdateUser({ nickName, gender, avatarUrl })
+        app.globalData.author = true
+      }
+
     } else {
       wx.showModal({
         title: '提示',

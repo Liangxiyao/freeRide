@@ -3,7 +3,7 @@ import HTTP from './utils/http'
 App({
   globalData: {
     userInfo: null,
-    isConnected: false,
+    author: false,
     address: ["北京","三门峡","灵宝","渑池","卢氏","义马","洛阳"]
   },
     //启动时候触发，只触发一次
@@ -11,6 +11,7 @@ App({
     this.checkNetwork()
     this.checkSession()
     this.getLogin()
+    this.getSetting()
   },
   onPageNotFound(res){
   },
@@ -89,9 +90,31 @@ App({
         }
       }
     })
+  },
+  /**
+   *获取用户设置
+   */
+  getSetting() {
+    let that =  this
+    wx.getSetting({
+      success(res) {  
+        if (res.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: function (res) {
+              //存后台  
+              let { nickName, gender, avatarUrl } = res.userInfo
+              HTTP.apiUpdateUser({ nickName, gender, avatarUrl })
+              that.globalData.author = true
+            }
+          })
+        } else {
+          that.globalData.author = false
+        } 
+      },
+      fail(err){
+        console.log('fail'+err)
+      }
+    })
   }
-  // //存储用户信息
-  // updateUserInfo(data) {
-  //   HTTP.apiUpdateUser(data)
-  // }
+    
 })

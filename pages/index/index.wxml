@@ -52,7 +52,7 @@
         </view> -->
 				<view class="item personNum">
           <icon class="iconfont icon-person" size="12px" />{{item.seatCount}}人
-          <text class="price">{{item.price ? item.price +'元/人':'价格面议'}}</text>
+          <text class="price">{{item.price ? item.price/100 +'元/人':'价格面议'}}</text>
 				</view>
 				<!-- <view class="tel">
           <text class="label">联系电话：</text>{{item.mobile}}

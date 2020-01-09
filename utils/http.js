@@ -44,7 +44,8 @@ const request = (url, params, method)=>{
                 }
               }
             })
-          } else {
+          } 
+          else {
             console.log(message)
           }      
         } else {
@@ -77,8 +78,7 @@ const http = {
   apiUpdateUser: p => request('/user/update', p),
   apiOrderList: p => request('/freeRide/user/list', p, 'POST'),
   apiCloseOrder: p => request('/freeRide/order/close', p, 'POST'),
-  apiEditOrder: p => request('/freeRide/order/edit', p, 'POST'),
-  
+  apiEditOrder: p => request('/freeRide/order/edit', p, 'POST')
 }
 
 

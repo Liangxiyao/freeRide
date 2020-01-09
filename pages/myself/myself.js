@@ -43,15 +43,18 @@ Page({
           avatarUrl
         }
       })
+      //授权才能跳转订单列表
       if (e.currentTarget.dataset.obj === 'order') {
         wx.navigateTo({
           url:'../../pages/myOrder/myOrder'
         })
+      }    
+      //授权后传后台
+      if (!app.globalData.author) {
+        HTTP.apiUpdateUser({ nickName, gender, avatarUrl })
+        app.globalData.author = true
       }
 
-      //存后台
-      HTTP.apiUpdateUser({ nickName, gender, avatarUrl })
-      
     } else {
       wx.showModal({
         title: '提示',
