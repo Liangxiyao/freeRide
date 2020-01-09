@@ -11,6 +11,7 @@ const leftPad0 = function (v, n) {
 };
 const stringToDate = function(str) {
   str = str.replace(/-/g, "/");
+  console.log(str)
   return new Date(str);
 };
 const isLeapYear = function(year) {

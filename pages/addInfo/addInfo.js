@@ -24,7 +24,12 @@ Page({
     let nowTimestamp = timestamp(this.data.initDate)
     let timeDifference = checkedTimestamp - nowTimestamp
     //出发时间最早为6小时后
+
+
     const timeDis = 6 * 60 * 60 * 1000
+    console.log(timeDifference)
+    console.log(timeDis)
+
     if (timeDifference > timeDis) {
       this.setData({
         date: checkedDate
@@ -175,6 +180,7 @@ Page({
     })
   },
   bindDateChange: function (e) {
+    console.log(e.detail.value)
     this.setData({
       date: e.detail.value
     })

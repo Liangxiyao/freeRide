@@ -1,4 +1,5 @@
-export const formatTime = (date,type) => {
+export const formatTime = (date, type) => {
+  console.log(date)
   const year = date.getFullYear()
   const month = date.getMonth() + 1
   const day = date.getDate()
@@ -20,6 +21,7 @@ const formatNumber = n => {
 }
 
 export const timestamp = date => { 
-  return new Date(date).valueOf()
+  var replaceDate = date.replace(/-/g,"/")
+  return new Date(replaceDate).valueOf()
 }
 

@@ -2,7 +2,7 @@
 .wd50{float: left;width:50%;}
 .page-detail{margin:10px;}
 .car-item{font-size:13px;color:#666;line-height:30px;padding:10px;background-color: #fff;margin-bottom:8px;border-radius:5px;}
-.car-item .label{display:inline-block;width:80px;text-align: right;color:#333;}
+.car-item .label{display:inline-block;width:170rpx;text-align: right;color:#333;}
 .orderStatus{line-height: 30px;margin-bottom: 5px;color: #000;font-size: 14px;}
 .orderStatus .status{text-align: right;color:#00a43e;}
 .orderStatus .status.end{color:#999;}

@@ -44,7 +44,7 @@ Page({
         }
       })
       //授权才能跳转订单列表
-      if (e.currentTarget.dataset.obj === 'order') {
+      if (e.currentTarget.dataset.obj === 'order') { 
         wx.navigateTo({
           url:'../../pages/myOrder/myOrder'
         })
