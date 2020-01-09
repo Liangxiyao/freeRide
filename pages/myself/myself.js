@@ -51,7 +51,7 @@ Page({
       }    
       //授权后传后台
       if (!app.globalData.author) {
-        HTTP.apiUpdateUser({ nickName, gender, avatarUrl })
+        HTTP.apiUpdateUser({ nickName, gender, headUrl:avatarUrl })
         app.globalData.author = true
       }
 

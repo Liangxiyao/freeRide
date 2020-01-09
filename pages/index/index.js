@@ -69,7 +69,7 @@ Page({
         url: '/pages/addInfo/addInfo',
       })
       if (!app.globalData.author) {
-        HTTP.apiUpdateUser({ nickName, gender, avatarUrl })
+        HTTP.apiUpdateUser({ nickName, gender, headUrl:avatarUrl })
         app.globalData.author = true
       }
 

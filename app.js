@@ -103,7 +103,7 @@ App({
             success: function (res) {
               //存后台  
               let { nickName, gender, avatarUrl } = res.userInfo
-              HTTP.apiUpdateUser({ nickName, gender, avatarUrl })
+              HTTP.apiUpdateUser({ nickName, gender, headUrl:avatarUrl })
               that.globalData.author = true
             }
           })
