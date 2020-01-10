@@ -35,7 +35,7 @@
       </view>
       <view class="item">
         <view class="label">联系人</view>
-        <input name="contact" type="text" class="input" value="{{formInput}}" placeholder="某先生/某女士"/>
+        <input name="contact" type="text" class="input" value="{{formInput}}" placeholder="某先生/某女士" maxlength="10"/>
       </view>
       <view class="item">
         <view class="label">联系电话</view>
